@@ -4,6 +4,7 @@ import App from "./App";
 import "./index.css";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { BrowserRouter } from "react-router-dom";
+import { TrainingProvider } from "./Context/trainingContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -13,7 +14,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         clientId="kbFsGoN5hpQFQtXhQ33fFmoDRAroU4tt"
         redirectUri={window.location.origin}
       >
-        <App />
+        <TrainingProvider>
+          <App />
+        </TrainingProvider>
       </Auth0Provider>
     </BrowserRouter>
   </React.StrictMode>

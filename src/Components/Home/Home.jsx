@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
-import EntrenamientoForm from "../Entrenamientos/EntrenamientoForm";
+// import EntrenamientoForm from "../Entrenamientos/EntrenamientoForm";
+import Entrenamientos from "../Entrenamientos/Entrenamientos";
 import Login from "../Login/Login";
 import NavBar from "../NavBar/NavBar";
 
@@ -12,7 +13,7 @@ export default function Home() {
   ) : (
     <div>
       <NavBar />
-      <EntrenamientoForm />
+      <Entrenamientos />
     </div>
   );
 }
