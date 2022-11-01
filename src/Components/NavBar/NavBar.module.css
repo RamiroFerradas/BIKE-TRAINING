@@ -1,0 +1,44 @@
+.navBar {
+  background-color: #3273ff93;
+  color: #fff;
+  padding: 1.5em 5%;
+  border-bottom-right-radius: 15%;
+  border-bottom-left-radius: 15%;
+  display: grid;
+  gap: 1.5em;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+  font-family: "Quicksand";
+}
+.navBar__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.nav__title {
+  margin: 0 10px;
+}
+.nav__list {
+  padding: 0;
+  list-style: none;
+  margin: 0 auto;
+
+  display: grid;
+  justify-content: end;
+  grid-auto-flow: column;
+  cursor: pointer;
+  gap: 2.5em;
+}
+
+.nav__link {
+  text-decoration: none;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.nav__img {
+  width: 50px;
+  height: 50px;
+}
