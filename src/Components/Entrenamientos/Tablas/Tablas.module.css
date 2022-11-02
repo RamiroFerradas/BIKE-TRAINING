@@ -1,0 +1,33 @@
+.tabla {
+  width: 100%;
+  /* height: 100vh; */
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 10px;
+  max-width: 30px;
+}
+th {
+  height: 10vh;
+  word-wrap: break-word;
+  /* width: 100px; */
+}
+.img {
+  width: 100%;
+  height: 150px;
+}
+
+span {
+  width: 100%;
+  height: 40vh;
+  font-size: 6vmin !important;
+  white-space: pre-wrap;
+}

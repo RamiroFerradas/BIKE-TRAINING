@@ -4,7 +4,6 @@ import styles from "./Login.module.css";
 
 export default function Login() {
   const { user, loginWithRedirect, logout, isLoading } = useAuth0();
-  console.log(user);
 
   return (
     <div className={styles.body}>

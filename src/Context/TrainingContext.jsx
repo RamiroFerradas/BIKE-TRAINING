@@ -13,50 +13,55 @@ const TrainingProvider = ({ children }) => {
 
   const [entrenamiento, setEntrenamiento] = useState({
     Lunes: {
-      bicicleta: { text: "MTB", error: false },
+      bicicleta: { text: "", error: false },
       calentamiento: { text: "", error: false },
       ejercicio_especifico: { text: "", error: false },
       descansos: { text: "", error: false },
     },
     Martes: {
-      bicicleta: { text: "MTB", error: false },
+      bicicleta: { text: "", error: false },
       calentamiento: { text: "", error: false },
       ejercicio_especifico: { text: "", error: false },
       descansos: { text: "", error: false },
     },
     Miercoles: {
-      bicicleta: { text: "MTB", error: false },
+      bicicleta: { text: "", error: false },
       calentamiento: { text: "", error: false },
       ejercicio_especifico: { text: "", error: false },
       descansos: { text: "", error: false },
     },
     Jueves: {
-      bicicleta: { text: "MTB", error: false },
+      bicicleta: { text: "", error: false },
       calentamiento: { text: "", error: false },
       ejercicio_especifico: { text: "", error: false },
       descansos: { text: "", error: false },
     },
     Viernes: {
-      bicicleta: { text: "MTB", error: false },
+      bicicleta: { text: "", error: false },
       calentamiento: { text: "", error: false },
       ejercicio_especifico: { text: "", error: false },
       descansos: { text: "", error: false },
     },
     Sabado: {
-      bicicleta: { text: "MTB", error: false },
+      bicicleta: { text: "", error: false },
       calentamiento: { text: "", error: false },
       ejercicio_especifico: { text: "", error: false },
       descansos: { text: "", error: false },
     },
     Domingo: {
-      bicicleta: { text: "MTB", error: false },
+      bicicleta: { text: "", error: false },
       calentamiento: { text: "", error: false },
       ejercicio_especifico: { text: "", error: false },
       descansos: { text: "", error: false },
     },
   });
 
-  const data = { entrenamiento, setEntrenamiento, cabecera, setCabecera };
+  const data = {
+    entrenamiento,
+    setEntrenamiento,
+    cabecera,
+    setCabecera,
+  };
 
   return (
     <TrainingContext.Provider value={data}>{children}</TrainingContext.Provider>

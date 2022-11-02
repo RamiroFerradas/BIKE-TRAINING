@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import useTraining from "../../../Hooks/useTraining";
 import FieldInput from "../Field/FieldInput";
+import styles from "./Cabecera.module.css";
 
 export default function Cabecera() {
   const { cabecera, setCabecera } = useTraining();
   const handleChangueInput = (e) => {
-    console.log(e.target.value);
     e.preventDefault();
     setCabecera({
       ...cabecera,
@@ -14,7 +14,7 @@ export default function Cabecera() {
   };
 
   return (
-    <div>
+    <div className={styles.body}>
       <form action="">
         <FieldInput
           field={cabecera.alumno}

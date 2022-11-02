@@ -2,8 +2,7 @@
   display: grid;
   grid-template-rows: 1fr;
 }
-.body form,
-.body .container {
+.body form {
   display: flex;
   justify-content: center;
 }
