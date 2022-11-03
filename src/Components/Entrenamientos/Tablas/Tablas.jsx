@@ -6,7 +6,7 @@ import styles from "./Tablas.module.css";
 import banerExcel from "../../../assets/banner excel.png";
 
 export default function Tablas() {
-  const { entrenamiento } = useTraining();
+  const { entrenamiento, cabecera } = useTraining();
 
   return (
     <div>
@@ -19,6 +19,16 @@ export default function Tablas() {
                 alt="durandoTraining"
                 className={styles.img}
               />
+              <div className={styles.cabecera1}>
+                <p>Alumno: {cabecera.alumno.text}</p>
+                <p>Localidad: {cabecera.localidad.text}</p>
+              </div>
+              <div className={styles.cabecera1}>
+                <p>Horas Disponibles: {cabecera.horas_disponibles.text}</p>
+                <p>Objetivo: {cabecera.objetivo.text}</p>
+                <p>Categoria: {cabecera.categoria.text}</p>
+                <p>Gimnasio: {cabecera.gimnasio.text}</p>
+              </div>
             </td>
             <tr className={styles.tableHead}>
               <td>Dia</td>

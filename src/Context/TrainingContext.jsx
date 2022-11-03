@@ -9,6 +9,7 @@ const TrainingProvider = ({ children }) => {
     horas_disponibles: { text: null, error: false },
     objetivo: { text: "", error: false },
     categoria: { text: "", error: false },
+    gimnasio: { text: "", error: false },
   });
 
   const [entrenamiento, setEntrenamiento] = useState({

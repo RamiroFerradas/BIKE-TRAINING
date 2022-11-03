@@ -27,7 +27,8 @@ export default function EntrenamientoForm() {
 
   return (
     <div className={styles.body}>
-      <div className={styles.container}>
+      <div className={styles.divForm}></div>
+      <form action="">
         <FieldInput field={day.text} id="dia" text="Dia:" textWrong="">
           <select name="day" id="day" onChange={handleDays}>
             {days.map((day) => {
@@ -40,63 +41,132 @@ export default function EntrenamientoForm() {
           </select>
         </FieldInput>
 
-        <form action="" id="myForm">
-          <FieldInput
-            field={entrenamiento[day.text]?.bicicleta}
-            id="bicicleta"
-            text="Bicicleta:"
-            textWrong=""
-          >
-            <select name="bicicleta" id="bici" onChange={handleChangueInput}>
-              {bicicletas.map((bici) => {
-                return <option id={bici.id}>{bici.value}</option>;
-              })}
-            </select>
-          </FieldInput>
-          <FieldInput
-            field={entrenamiento[day.text]?.calentamiento.text}
-            id="calentamiento"
-            text="Calentamiento:"
-            textWrong=""
-          >
-            <textarea
-              rows={"5"}
-              cols={"30"}
-              name="calentamiento"
-              onChange={handleChangueInput}
-              value={entrenamiento[day.text]?.calentamiento.text}
-            />
-          </FieldInput>
-          <FieldInput
-            field={entrenamiento[day.text]?.ejercicio_especifico.text}
-            id="ejercicio_especifico"
-            text="Ejercicio Especifico:"
-            textWrong=""
-          >
-            <textarea
-              rows={"5"}
-              cols={"30"}
-              value={entrenamiento[day.text]?.ejercicio_especifico.text}
-              name="ejercicio_especifico"
-              onChange={handleChangueInput}
-            />
-          </FieldInput>
-          <FieldInput
-            field={entrenamiento[day.text]?.descansos}
-            id="descansos"
-            text="Descansos:"
-            textWrong=""
-          >
-            <textarea
-              rows={"5"}
-              cols={"30"}
-              value={entrenamiento[day.text]?.descansos.text}
-              name="descansos"
-              onChange={handleChangueInput}
-            />
-          </FieldInput>
-        </form>
-      </div>
+        <FieldInput
+          className={styles.selectDay}
+          field={entrenamiento[day.text]?.bicicleta}
+          id="bicicleta"
+          text="Bicicleta:"
+          textWrong=""
+        >
+          <select name="bicicleta" id="bici" onChange={handleChangueInput}>
+            {bicicletas.map((bici) => {
+              return <option id={bici.id}>{bici.value}</option>;
+            })}
+          </select>
+        </FieldInput>
+
+        <FieldInput
+          field={entrenamiento[day.text]?.calentamiento.text}
+          id="calentamiento"
+          text="Calentamiento:"
+          textWrong=""
+        >
+          <textarea
+            id="myForm"
+            rows={"5"}
+            cols={"30"}
+            name="calentamiento"
+            onChange={handleChangueInput}
+            value={entrenamiento[day.text]?.calentamiento.text}
+          />
+        </FieldInput>
+
+        <FieldInput
+          field={entrenamiento[day.text]?.ejercicio_especifico.text}
+          id="ejercicio_especifico"
+          text="Ejercicio Especifico:"
+          textWrong=""
+        >
+          <textarea
+            rows={"5"}
+            cols={"30"}
+            value={entrenamiento[day.text]?.ejercicio_especifico.text}
+            name="ejercicio_especifico"
+            onChange={handleChangueInput}
+            id="myForm"
+          />
+        </FieldInput>
+
+        <FieldInput
+          field={entrenamiento[day.text]?.descansos}
+          id="descansos"
+          text="Descansos:"
+          textWrong=""
+        >
+          <textarea
+            id="myForm"
+            rows={"5"}
+            cols={"30"}
+            value={entrenamiento[day.text]?.descansos.text}
+            name="descansos"
+            onChange={handleChangueInput}
+          />
+        </FieldInput>
+
+        <FieldInput
+          field={entrenamiento[day.text]?.descansos}
+          id="rodada_final"
+          text="Rodada final"
+          textWrong=""
+        >
+          <textarea
+            id="myForm"
+            rows={"5"}
+            cols={"30"}
+            value={entrenamiento[day.text]?.descansos.text}
+            name="descansos"
+            onChange={handleChangueInput}
+          />
+        </FieldInput>
+
+        <FieldInput
+          field={entrenamiento[day.text]?.descansos}
+          id="horas_estimadas"
+          text="Horas estimadas:"
+          textWrong=""
+        >
+          <textarea
+            id="myForm"
+            rows={"5"}
+            cols={"30"}
+            value={entrenamiento[day.text]?.descansos.text}
+            name="descansos"
+            onChange={handleChangueInput}
+          />
+        </FieldInput>
+
+        <FieldInput
+          field={entrenamiento[day.text]?.descansos}
+          id="tipo_entrenamiento"
+          text="Tipo de entrenamiento:"
+          textWrong=""
+        >
+          <textarea
+            id="myForm"
+            rows={"5"}
+            cols={"30"}
+            value={entrenamiento[day.text]?.descansos.text}
+            name="descansos"
+            onChange={handleChangueInput}
+          />
+        </FieldInput>
+
+        <FieldInput
+          field={entrenamiento[day.text]?.descansos}
+          id="gym"
+          text="Gym:"
+          textWrong=""
+        >
+          <textarea
+            id="myForm"
+            rows={"5"}
+            cols={"30"}
+            value={entrenamiento[day.text]?.descansos.text}
+            name="descansos"
+            onChange={handleChangueInput}
+          />
+        </FieldInput>
+      </form>
     </div>
   );
 }

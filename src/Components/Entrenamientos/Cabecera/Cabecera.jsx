@@ -6,10 +6,12 @@ import styles from "./Cabecera.module.css";
 export default function Cabecera() {
   const { cabecera, setCabecera } = useTraining();
   const handleChangueInput = (e) => {
-    e.preventDefault();
-    setCabecera({
-      ...cabecera,
-      [e.target.name]: e.target.value,
+    console.log(e.target.value);
+    setCabecera((state) => {
+      return {
+        ...state,
+        [e.target.name]: { text: e.target.value, error: false },
+      };
     });
   };
 
@@ -24,7 +26,6 @@ export default function Cabecera() {
         >
           <input type="text" name="alumno" onChange={handleChangueInput} />
         </FieldInput>
-
         <FieldInput
           field={cabecera.localidad}
           id="localidad"
@@ -33,7 +34,6 @@ export default function Cabecera() {
         >
           <input type="text" name="localidad" onChange={handleChangueInput} />
         </FieldInput>
-
         <FieldInput
           field={cabecera.horas_disponibles}
           id="horas_disponibles"
@@ -46,14 +46,32 @@ export default function Cabecera() {
             onChange={handleChangueInput}
           />
         </FieldInput>
-
         <FieldInput
-          field={cabecera.localidad}
-          id="localidad"
-          text="Localidad:"
+          field={cabecera.objetivo}
+          id="objetivo"
+          text="Objetivo:"
           textWrong=""
         >
-          <input type="text" name="localidad" onChange={handleChangueInput} />
+          <input type="text" name="objetivo" onChange={handleChangueInput} />
+        </FieldInput>
+        <FieldInput
+          field={cabecera.categoria}
+          id="categoria"
+          text="Categoria:"
+          textWrong=""
+        >
+          <input type="text" name="categoria" onChange={handleChangueInput} />
+        </FieldInput>
+        <FieldInput
+          field={cabecera.gimnasio}
+          id="gimnasio"
+          text="Gimnasio:"
+          textWrong=""
+        >
+          <select name="gimnasio" id="" onChange={handleChangueInput}>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+          </select>
         </FieldInput>
       </form>
     </div>
