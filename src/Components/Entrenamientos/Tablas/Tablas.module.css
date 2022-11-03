@@ -37,7 +37,12 @@ span {
   padding: 10px;
   font-size: 3vmin !important;
 }
-.cabecera1 span {
-  font-size: 1px;
+.cabecera1 p {
+  color: black;
+  text-decoration: underline rgb(0, 0, 0);
   /* text-align: center; */
+}
+
+.tableDays {
+  width: 30vw;
 }

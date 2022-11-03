@@ -1,7 +1,6 @@
 import style from "./FieldInput.module.css";
 
 const FieldInput = ({ field, id, text, textWrong, children }) => {
-  console.log(field);
   return (
     <div
       className={

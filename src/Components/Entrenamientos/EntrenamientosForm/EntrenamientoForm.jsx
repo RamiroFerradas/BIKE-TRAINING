@@ -1,36 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./EntrenamientoForm.module.css";
 import FieldInput from "../Field/FieldInput";
 import { bicicletas, days } from "../Options/Options";
 import useTraining from "../../../Hooks/useTraining";
 
 export default function EntrenamientoForm() {
-  const { entrenamiento, setEntrenamiento } = useTraining();
-
-  const [day, setDay] = useState({ text: "Lunes", error: false });
-
-  const handleChangueInput = (e) => {
-    setEntrenamiento((state) => {
-      return {
-        ...state,
-        [day.text]: {
-          ...entrenamiento[day.text],
-          [e.target.name]: { text: e.target.value, error: false },
-        },
-      };
-    });
-  };
-  const handleDays = (e) => {
-    setDay({ text: e.target.value, error: false });
-    document.getElementById("myForm").reset();
-  };
+  const { entrenamiento, day, handleChangueInput, handleDays } = useTraining();
 
   return (
     <div className={styles.body}>
       <div className={styles.divForm}></div>
       <form action="">
-        <FieldInput field={day.text} id="dia" text="Dia:" textWrong="">
-          <select name="day" id="day" onChange={handleDays}>
+        <FieldInput field="" id="dia" text="Dia:" textWrong="">
+          <select name="day" id="day" onChange={(e) => handleDays(e)}>
             {days.map((day) => {
               return (
                 <option value={day.value} id={day.id}>
@@ -104,7 +86,7 @@ export default function EntrenamientoForm() {
         </FieldInput>
 
         <FieldInput
-          field={entrenamiento[day.text]?.descansos}
+          field={entrenamiento[day.text]?.rodada_final}
           id="rodada_final"
           text="Rodada final"
           textWrong=""
@@ -113,14 +95,14 @@ export default function EntrenamientoForm() {
             id="myForm"
             rows={"5"}
             cols={"30"}
-            value={entrenamiento[day.text]?.descansos.text}
-            name="descansos"
+            value={entrenamiento[day.text]?.rodada_final.text}
+            name="rodada_final"
             onChange={handleChangueInput}
           />
         </FieldInput>
 
         <FieldInput
-          field={entrenamiento[day.text]?.descansos}
+          field={entrenamiento[day.text]?.horas_estimadas}
           id="horas_estimadas"
           text="Horas estimadas:"
           textWrong=""
@@ -129,14 +111,14 @@ export default function EntrenamientoForm() {
             id="myForm"
             rows={"5"}
             cols={"30"}
-            value={entrenamiento[day.text]?.descansos.text}
-            name="descansos"
+            value={entrenamiento[day.text]?.horas_estimadas.text}
+            name="horas_estimadas"
             onChange={handleChangueInput}
           />
         </FieldInput>
 
         <FieldInput
-          field={entrenamiento[day.text]?.descansos}
+          field={entrenamiento[day.text]?.tipo_entrenamiento}
           id="tipo_entrenamiento"
           text="Tipo de entrenamiento:"
           textWrong=""
@@ -145,14 +127,14 @@ export default function EntrenamientoForm() {
             id="myForm"
             rows={"5"}
             cols={"30"}
-            value={entrenamiento[day.text]?.descansos.text}
-            name="descansos"
+            value={entrenamiento[day.text]?.tipo_entrenamiento.text}
+            name="tipo_entrenamiento"
             onChange={handleChangueInput}
           />
         </FieldInput>
 
         <FieldInput
-          field={entrenamiento[day.text]?.descansos}
+          field={entrenamiento[day.text]?.gym}
           id="gym"
           text="Gym:"
           textWrong=""
@@ -161,8 +143,8 @@ export default function EntrenamientoForm() {
             id="myForm"
             rows={"5"}
             cols={"30"}
-            value={entrenamiento[day.text]?.descansos.text}
-            name="descansos"
+            value={entrenamiento[day.text]?.gym.text}
+            name="gym"
             onChange={handleChangueInput}
           />
         </FieldInput>

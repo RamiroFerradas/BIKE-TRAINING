@@ -13,7 +13,8 @@ export default function Tablas() {
       <div>
         <table id="tablaEntrenamientos" className={styles.tabla}>
           <tbody>
-            <td colSpan="5">
+            {/* CABECERA */}
+            <td colSpan="8">
               <img
                 src={banerExcel}
                 alt="durandoTraining"
@@ -36,16 +37,26 @@ export default function Tablas() {
               <th>Calentamiento</th>
               <th>Ejercicio Especifico</th>
               <th>Descansos</th>
+              <th>Rodada final</th>
+              <th>Horas estimadas</th>
+              <th>Tipo de entrenamiento</th>
+              {cabecera.gimnasio.text === "Si" && <th>Gimnasio</th>}
             </tr>
-
+            {/* ENTRENAMIENTO */}
             {days.map((day) => {
               return (
                 <tr>
-                  <td className={styles.tableDays}> {day.value}</td>
+                  <td width="6%"> {day.value}</td>
                   <th>{entrenamiento[day.value].bicicleta.text}</th>
                   <th>{entrenamiento[day.value].calentamiento.text}</th>
                   <th>{entrenamiento[day.value].ejercicio_especifico.text}</th>
                   <th>{entrenamiento[day.value].descansos.text}</th>
+                  <th>{entrenamiento[day.value].rodada_final.text}</th>
+                  <th>{entrenamiento[day.value].horas_estimadas.text}</th>
+                  <th>{entrenamiento[day.value].tipo_entrenamiento.text}</th>
+                  {cabecera.gimnasio.text === "Si" && (
+                    <th>{entrenamiento[day.value].gym.text}</th>
+                  )}
                 </tr>
               );
             })}
