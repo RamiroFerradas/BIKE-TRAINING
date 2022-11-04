@@ -15,25 +15,27 @@ export default function Tablas() {
           {/* CABECERA */}
           <tr>
             <td colSpan="8">
-              {/* <tr colSpan="10">
-                <img
-                  src="https://i.ibb.co/ynV5wLP/banner-excel.png"
-                  alt="durandoTraining"
-                  className={styles.img}
-                />
-              </tr> */}
+              <table width="100%" className={styles.tableImg}>
+                <tr>
+                  <img
+                    src="https://i.ibb.co/ynV5wLP/banner-excel.png"
+                    alt="durandoTraining"
+                    className={styles.img}
+                  />
+                </tr>
+              </table>
 
               <div className={styles.cabecera1}>
-                <span>Alumno: {cabecera.alumno.text}</span>
-                <span>Localidad: {cabecera.localidad.text}</span>
+                <span>Alumno: </span> {cabecera.alumno.text}
+                <span>Localidad: </span> {cabecera.localidad.text}
               </div>
               <div className={styles.cabecera1}>
                 <span>
                   Horas Disponibles: {cabecera.horas_disponibles.text}
                 </span>
-                <span>Objetivo: {cabecera.objetivo.text}</span>
-                <span>Categoria: {cabecera.categoria.text}</span>
-                <span>Gimnasio: {cabecera.gimnasio.text}</span>
+                <span>Objetivo: </span> {cabecera.objetivo.text}
+                <span>Categoria: </span> {cabecera.categoria.text}
+                <span>Gimnasio: </span> {cabecera.gimnasio.text}
               </div>
             </td>
           </tr>

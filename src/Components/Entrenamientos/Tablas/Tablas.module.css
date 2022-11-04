@@ -38,7 +38,7 @@ span {
   padding: 10px;
   font-size: 2vmin !important;
 }
-.cabecera1 p {
+.cabecera1 span {
   color: black;
   text-decoration: underline rgb(0, 0, 0);
   /* text-align: center; */
@@ -70,6 +70,9 @@ textarea {
 .buttonExcel:focus,
 .buttonExcel:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+.tableImg {
+  height: 160px;
 }
 
 @media screen and (max-width: 1300px) {
