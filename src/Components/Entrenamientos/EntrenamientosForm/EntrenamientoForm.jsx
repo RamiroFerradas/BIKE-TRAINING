@@ -5,24 +5,46 @@ import { bicicletas, days } from "../Options/Options";
 import useTraining from "../../../Hooks/useTraining";
 
 export default function EntrenamientoForm() {
-  const { entrenamiento, day, handleChangueInput, handleDays } = useTraining();
+  const { entrenamiento, day, handleChangueInput, handleDays, cabecera } =
+    useTraining();
 
   return (
     <div className={styles.body}>
       <div className={styles.divForm}></div>
       <form action="">
-        <FieldInput field="" id="dia" text="Dia:" textWrong="">
-          <select name="day" id="day" onChange={(e) => handleDays(e)}>
-            {days.map((day) => {
-              return (
-                <option key={day.id} value={day.value} id={day.id}>
-                  {day.value}
-                </option>
-              );
-            })}
-          </select>
-        </FieldInput>
-
+        {/* <FieldInput field="" id="" text="" textWrong=""> */}
+        <div className={styles.selects}>
+          <FieldInput field="" id="dia" text="Dia:" textWrong="">
+            <select name="day" id="day" onChange={(e) => handleDays(e)}>
+              {days.map((day) => {
+                return (
+                  <option key={day.id} value={day.value} id={day.id}>
+                    {day.value}
+                  </option>
+                );
+              })}
+            </select>
+          </FieldInput>
+          <FieldInput
+            className={styles.selectDay}
+            field={entrenamiento[day.text]?.bicicleta}
+            id="bicicleta"
+            text="Bicicleta:"
+            textWrong=""
+          >
+            <select name="bicicleta" id="bici" onChange={handleChangueInput}>
+              {bicicletas.map((bici) => {
+                return (
+                  <option key={bici.id} id={bici.id} value={bici.value}>
+                    {bici.value}
+                  </option>
+                );
+              })}
+            </select>
+          </FieldInput>
+        </div>
+        {/* </FieldInput> */}
+        {/* 
         <FieldInput
           className={styles.selectDay}
           field={entrenamiento[day.text]?.bicicleta}
@@ -39,7 +61,7 @@ export default function EntrenamientoForm() {
               );
             })}
           </select>
-        </FieldInput>
+        </FieldInput> */}
 
         <FieldInput
           field={entrenamiento[day.text]?.calentamiento.text}
@@ -137,21 +159,23 @@ export default function EntrenamientoForm() {
           />
         </FieldInput>
 
-        <FieldInput
-          field={entrenamiento[day.text]?.gym}
-          id="gym"
-          text="Gym:"
-          textWrong=""
-        >
-          <textarea
-            id="myForm"
-            rows={"5"}
-            cols={"30"}
-            value={entrenamiento[day.text]?.gym.text}
-            name="gym"
-            onChange={handleChangueInput}
-          />
-        </FieldInput>
+        {cabecera.gimnasio.text === "Si" && (
+          <FieldInput
+            field={entrenamiento[day.text]?.gym}
+            id="gym"
+            text="Gym:"
+            textWrong=""
+          >
+            <textarea
+              id="myForm"
+              rows={"5"}
+              cols={"30"}
+              value={entrenamiento[day.text]?.gym.text}
+              name="gym"
+              onChange={handleChangueInput}
+            />
+          </FieldInput>
+        )}
       </form>
     </div>
   );

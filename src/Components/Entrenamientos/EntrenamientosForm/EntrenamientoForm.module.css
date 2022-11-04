@@ -30,3 +30,8 @@
 .body select:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.selects {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}

@@ -21,7 +21,7 @@ export default function Cabecera() {
         <FieldInput
           field={cabecera.planilla}
           id="planilla"
-          text="Nombre de la planilla:"
+          text="Nombre de planilla:"
           textWrong=""
         >
           <input type="text" name="planilla" onChange={handleChangueInput} />

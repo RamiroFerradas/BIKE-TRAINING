@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 
 const TrainingContext = createContext();
 
-const TrainingProvider = ({ children }) => {
+export const TrainingProvider = ({ children }) => {
   const [day, setDay] = useState({ text: "Lunes", error: false });
 
   const [cabecera, setCabecera] = useState({
@@ -12,7 +12,7 @@ const TrainingProvider = ({ children }) => {
     horas_disponibles: { text: null, error: false },
     objetivo: { text: "", error: false },
     categoria: { text: "", error: false },
-    gimnasio: { text: "", error: false },
+    gimnasio: { text: "No", error: false },
   });
 
   const [entrenamiento, setEntrenamiento] = useState({
@@ -117,5 +117,5 @@ const TrainingProvider = ({ children }) => {
     <TrainingContext.Provider value={data}>{children}</TrainingContext.Provider>
   );
 };
-export { TrainingProvider };
+
 export default TrainingContext;

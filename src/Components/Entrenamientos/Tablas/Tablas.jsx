@@ -14,7 +14,7 @@ export default function Tablas() {
         <tbody>
           {/* CABECERA */}
           <tr>
-            <td colSpan="8">
+            <td colSpan="9">
               {/* <table width="100%" className={styles.tableImg}>
                 <tr>
                   <img
@@ -26,16 +26,28 @@ export default function Tablas() {
               </table> */}
 
               <div className={styles.cabecera1}>
-                <span>Alumno: </span> {cabecera.alumno.text}
-                <span>Localidad: </span> {cabecera.localidad.text}
+                <p>
+                  <span>Alumno: </span> {cabecera.alumno.text}
+                </p>
+                <p>
+                  <span>Localidad: </span> {cabecera.localidad.text}
+                </p>
               </div>
               <div className={styles.cabecera1}>
-                <span>
-                  Horas Disponibles: {cabecera.horas_disponibles.text}
-                </span>
-                <span>Objetivo: </span> {cabecera.objetivo.text}
-                <span>Categoria: </span> {cabecera.categoria.text}
-                <span>Gimnasio: </span> {cabecera.gimnasio.text}
+                <p>
+                  <span>
+                    Horas disponibles: {cabecera.horas_disponibles.text}
+                  </span>
+                </p>
+                <p>
+                  <span>Objetivo: </span> {cabecera.objetivo.text}
+                </p>
+                <p>
+                  <span>Categoria: </span> {cabecera.categoria.text}
+                </p>
+                <p>
+                  <span>Gimnasio: </span> {cabecera.gimnasio.text}
+                </p>
               </div>
             </td>
           </tr>
