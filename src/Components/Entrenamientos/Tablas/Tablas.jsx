@@ -1,12 +1,14 @@
 import React from "react";
 import ReactHtmlTableToExcel from "react-html-table-to-excel";
 import useTraining from "../../../Hooks/useTraining";
-import { days } from "../Options/Options";
+import { days } from "../Utils/Options";
 import styles from "./Tablas.module.css";
-import banerExcel from "../../../assets/banner excel.png";
+import { textTransformation } from "../Utils/TextTransformation";
 
 export default function Tablas() {
   const { entrenamiento, cabecera } = useTraining();
+
+  // console.log(textTransformation);
 
   return (
     <div className={styles.body}>
@@ -27,26 +29,32 @@ export default function Tablas() {
 
               <div className={styles.cabecera1}>
                 <p>
-                  <span>Alumno: </span> {cabecera.alumno.text}
+                  <span>Alumno: </span>
+                  {textTransformation(cabecera.alumno.text)}
                 </p>
                 <p>
-                  <span>Localidad: </span> {cabecera.localidad.text}
+                  <span>Localidad: </span>
+                  {textTransformation(cabecera.localidad.text)}
                 </p>
               </div>
               <div className={styles.cabecera1}>
                 <p>
                   <span>
-                    Horas disponibles: {cabecera.horas_disponibles.text}
+                    Horas disponibles:
+                    {cabecera.horas_disponibles.text}
                   </span>
                 </p>
                 <p>
-                  <span>Objetivo: </span> {cabecera.objetivo.text}
+                  <span>Objetivo: </span>
+                  {textTransformation(cabecera.objetivo.text)}
                 </p>
                 <p>
-                  <span>Categoria: </span> {cabecera.categoria.text}
+                  <span>Categoria: </span>
+                  {textTransformation(cabecera.categoria.text)}
                 </p>
                 <p>
-                  <span>Gimnasio: </span> {cabecera.gimnasio.text}
+                  <span>Gimnasio: </span>
+                  {textTransformation(cabecera.gimnasio.text)}
                 </p>
               </div>
             </td>
@@ -72,13 +80,37 @@ export default function Tablas() {
                 <td className={styles.days} width="7%">
                   {day.value}
                 </td>
-                <th>{entrenamiento[day.value].bicicleta.text}</th>
-                <th>{entrenamiento[day.value].calentamiento.text}</th>
-                <th>{entrenamiento[day.value].ejercicio_especifico.text}</th>
-                <th>{entrenamiento[day.value].descansos.text}</th>
-                <th>{entrenamiento[day.value].rodada_final.text}</th>
-                <th>{entrenamiento[day.value].horas_estimadas.text}</th>
-                <th>{entrenamiento[day.value].tipo_entrenamiento.text}</th>
+                <th>
+                  {textTransformation(entrenamiento[day.value].bicicleta.text)}
+                </th>
+                <th>
+                  {textTransformation(
+                    entrenamiento[day.value].calentamiento.text
+                  )}
+                </th>
+                <th>
+                  {textTransformation(
+                    entrenamiento[day.value].ejercicio_especifico.text
+                  )}
+                </th>
+                <th>
+                  {textTransformation(entrenamiento[day.value].descansos.text)}
+                </th>
+                <th>
+                  {textTransformation(
+                    entrenamiento[day.value].rodada_final.text
+                  )}
+                </th>
+                <th>
+                  {textTransformation(
+                    entrenamiento[day.value].horas_estimadas.text
+                  )}
+                </th>
+                <th>
+                  {textTransformation(
+                    entrenamiento[day.value].tipo_entrenamiento.text
+                  )}
+                </th>
                 {cabecera.gimnasio.text === "Si" && (
                   <th>{entrenamiento[day.value].gym.text}</th>
                 )}

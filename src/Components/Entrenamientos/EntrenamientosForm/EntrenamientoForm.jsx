@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./EntrenamientoForm.module.css";
 import FieldInput from "../Field/FieldInput";
-import { bicicletas, days } from "../Options/Options";
+import { bicicletas, days } from "../Utils/Options";
 import useTraining from "../../../Hooks/useTraining";
 
 export default function EntrenamientoForm() {
