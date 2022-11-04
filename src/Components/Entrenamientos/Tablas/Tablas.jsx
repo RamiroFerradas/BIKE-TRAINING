@@ -9,17 +9,20 @@ export default function Tablas() {
   const { entrenamiento, cabecera } = useTraining();
 
   return (
-    <div>
+    <div className={styles.body}>
       <div>
         <table id="tablaEntrenamientos" className={styles.tabla}>
           <tbody>
             {/* CABECERA */}
             <td colSpan="8">
-              <img
-                src={banerExcel}
-                alt="durandoTraining"
-                className={styles.img}
-              />
+              {/* <tr colSpan="10">
+                <img
+                  src="https://i.ibb.co/ynV5wLP/banner-excel.png"
+                  alt="durandoTraining"
+                  className={styles.img}
+                />
+              </tr> */}
+
               <div className={styles.cabecera1}>
                 <p>Alumno: {cabecera.alumno.text}</p>
                 <p>Localidad: {cabecera.localidad.text}</p>
@@ -65,11 +68,11 @@ export default function Tablas() {
       </div>
 
       <ReactHtmlTableToExcel
-        // clasName={styles.buttonExcel}
-        filename="prueba123"
+        className={styles.buttonExcel}
+        filename={`${cabecera.planilla.text}` || "Durando_Training"}
         table="tablaEntrenamientos"
         sheet="pagina 1"
-        buttonText="descargar excel"
+        buttonText="Descargar excel"
       />
     </div>
   );

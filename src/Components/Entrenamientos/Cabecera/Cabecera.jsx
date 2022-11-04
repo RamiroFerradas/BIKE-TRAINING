@@ -19,6 +19,14 @@ export default function Cabecera() {
     <div className={styles.body}>
       <form action="">
         <FieldInput
+          field={cabecera.planilla}
+          id="planilla"
+          text="Nombre de la planilla:"
+          textWrong=""
+        >
+          <input type="text" name="planilla" onChange={handleChangueInput} />
+        </FieldInput>
+        <FieldInput
           field={cabecera.alumno}
           id="alumno"
           text="Alumno:"

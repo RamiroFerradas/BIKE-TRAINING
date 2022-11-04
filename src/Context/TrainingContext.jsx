@@ -6,6 +6,7 @@ const TrainingProvider = ({ children }) => {
   const [day, setDay] = useState({ text: "Lunes", error: false });
 
   const [cabecera, setCabecera] = useState({
+    planilla: { text: "", error: false },
     alumno: { text: "", error: false },
     localidad: { text: "", error: false },
     horas_disponibles: { text: null, error: false },
