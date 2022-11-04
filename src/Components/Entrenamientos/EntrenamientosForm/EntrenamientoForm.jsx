@@ -15,7 +15,7 @@ export default function EntrenamientoForm() {
           <select name="day" id="day" onChange={(e) => handleDays(e)}>
             {days.map((day) => {
               return (
-                <option value={day.value} id={day.id}>
+                <option key={day.id} value={day.value} id={day.id}>
                   {day.value}
                 </option>
               );
@@ -32,7 +32,11 @@ export default function EntrenamientoForm() {
         >
           <select name="bicicleta" id="bici" onChange={handleChangueInput}>
             {bicicletas.map((bici) => {
-              return <option id={bici.id}>{bici.value}</option>;
+              return (
+                <option key={bici.id} id={bici.id} value={bici.value}>
+                  {bici.value}
+                </option>
+              );
             })}
           </select>
         </FieldInput>
