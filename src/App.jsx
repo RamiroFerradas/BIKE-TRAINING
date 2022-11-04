@@ -7,16 +7,16 @@ import Login from "./Components/Login/Login";
 import Home from "./Components/Home/Home";
 import NavBar from "./Components/NavBar/NavBar";
 import Alumnos from "./Components/Alumnos/Alumnos";
+import Loader from "./Components/Loader/Loader";
 
 function App() {
-  const { isAuthenticated, isLoading, loginWithRedirect } = useAuth0();
+  const { isLoading } = useAuth0();
   if (isLoading) {
-    return <h1>CARGANDO...</h1>;
+    return <Loader />;
   }
   return (
     <div className="App">
       <Routes>
-        {/* <Route index element={<Login />} /> */}
         <Route path="/" element={<Home />}></Route>
         <Route path="/alumnos" element={<Alumnos />}></Route>
         <Route></Route>

@@ -7,17 +7,15 @@ import { BrowserRouter } from "react-router-dom";
 import { TrainingProvider } from "./Context/TrainingContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <Auth0Provider
+    domain="dev-usdtec3d.us.auth0.com"
+    clientId="kbFsGoN5hpQFQtXhQ33fFmoDRAroU4tt"
+    redirectUri={window.location.origin}
+  >
     <BrowserRouter>
-      <Auth0Provider
-        domain="dev-usdtec3d.us.auth0.com"
-        clientId="kbFsGoN5hpQFQtXhQ33fFmoDRAroU4tt"
-        redirectUri={window.location.origin}
-      >
-        <TrainingProvider>
-          <App />
-        </TrainingProvider>
-      </Auth0Provider>
+      <TrainingProvider>
+        <App />
+      </TrainingProvider>
     </BrowserRouter>
-  </React.StrictMode>
+  </Auth0Provider>
 );

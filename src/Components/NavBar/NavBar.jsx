@@ -37,6 +37,13 @@ export default function NavBar() {
           <NavLink className={styles.nav__link} onClick={() => logout()}>
             SALIR
           </NavLink>
+          {user.picture && (
+            <img
+              className={styles.imgUser}
+              src={user.picture}
+              alt={user.given_name}
+            />
+          )}
         </div>
       </nav>
     </div>

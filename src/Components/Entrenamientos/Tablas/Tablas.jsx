@@ -24,14 +24,16 @@ export default function Tablas() {
               </tr> */}
 
               <div className={styles.cabecera1}>
-                <p>Alumno: {cabecera.alumno.text}</p>
-                <p>Localidad: {cabecera.localidad.text}</p>
+                <span>Alumno: {cabecera.alumno.text}</span>
+                <span>Localidad: {cabecera.localidad.text}</span>
               </div>
               <div className={styles.cabecera1}>
-                <p>Horas Disponibles: {cabecera.horas_disponibles.text}</p>
-                <p>Objetivo: {cabecera.objetivo.text}</p>
-                <p>Categoria: {cabecera.categoria.text}</p>
-                <p>Gimnasio: {cabecera.gimnasio.text}</p>
+                <span>
+                  Horas Disponibles: {cabecera.horas_disponibles.text}
+                </span>
+                <span>Objetivo: {cabecera.objetivo.text}</span>
+                <span>Categoria: {cabecera.categoria.text}</span>
+                <span>Gimnasio: {cabecera.gimnasio.text}</span>
               </div>
             </td>
           </tr>

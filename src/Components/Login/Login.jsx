@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./Login.module.css";
 
 export default function Login() {
-  const { user, loginWithRedirect, logout, isLoading } = useAuth0();
+  const { loginWithRedirect } = useAuth0();
 
   return (
     <div className={styles.body}>

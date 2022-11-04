@@ -6,7 +6,8 @@
   align-items: center;
 }
 .body input {
-  /* width: 30vw; */
+  resize: horizontal;
+  max-width: 150px;
 }
 
 .body select {
