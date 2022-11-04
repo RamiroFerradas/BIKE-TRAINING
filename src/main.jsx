@@ -4,7 +4,7 @@ import App from "./App";
 import "./index.css";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { BrowserRouter } from "react-router-dom";
-import { TrainingProvider } from "./Context/trainingContext";
+import { TrainingProvider } from "./Context/TrainingContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
