@@ -1,11 +1,14 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./NavBar.module.css";
 import logo from "../../assets/logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 export default function NavBar() {
   const { user, logout } = useAuth0();
+  const { pathname } = useLocation();
+  useEffect(() => {}, []);
+
   return (
     <div>
       <nav className={styles.navBar}>
@@ -15,8 +18,22 @@ export default function NavBar() {
         </div>
 
         <div className={styles.nav__list}>
-          <NavLink className={styles.nav__link}>CREAR ENTRENAMIENTO</NavLink>
-          <NavLink className={styles.nav__link}>ALUMNOS</NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? styles.active : styles.nav__link
+            }
+            to="/"
+          >
+            CREAR ENTRENAMIENTO
+          </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              isActive ? styles.active : styles.nav__link
+            }
+            to="/alumnos"
+          >
+            ALUMNOS
+          </NavLink>
           <NavLink className={styles.nav__link} onClick={() => logout()}>
             SALIR
           </NavLink>

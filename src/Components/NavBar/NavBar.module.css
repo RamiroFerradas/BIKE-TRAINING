@@ -37,8 +37,14 @@
   text-decoration: none;
   font-weight: normal;
   cursor: pointer;
+  color: white;
 }
-
+.active {
+  text-decoration: none;
+  font-weight: normal;
+  cursor: pointer;
+  color: rgb(255, 215, 103);
+}
 .nav__img {
   width: 50px;
   height: 50px;
