@@ -8,8 +8,6 @@ import { textTransformation } from "../Utils/TextTransformation";
 export default function Tablas() {
   const { entrenamiento, cabecera } = useTraining();
 
-  // console.log(textTransformation);
-
   return (
     <div className={styles.body}>
       <table id="tablaEntrenamientos" className={styles.tabla}>
