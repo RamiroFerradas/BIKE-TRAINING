@@ -15,7 +15,7 @@ export default function Tablas() {
           {/* CABECERA */}
           <tr>
             <td colSpan="8">
-              <table width="100%" className={styles.tableImg}>
+              {/* <table width="100%" className={styles.tableImg}>
                 <tr>
                   <img
                     src="https://i.ibb.co/ynV5wLP/banner-excel.png"
@@ -23,7 +23,7 @@ export default function Tablas() {
                     className={styles.img}
                   />
                 </tr>
-              </table>
+              </table> */}
 
               <div className={styles.cabecera1}>
                 <span>Alumno: </span> {cabecera.alumno.text}
