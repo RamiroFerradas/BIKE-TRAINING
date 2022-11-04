@@ -5,6 +5,9 @@
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   align-items: center;
 }
+.body input {
+  /* width: 30vw; */
+}
 
 .body select {
   border-radius: 8px;
