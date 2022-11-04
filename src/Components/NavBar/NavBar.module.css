@@ -25,12 +25,12 @@
   padding: 0;
   list-style: none;
   margin: 0 auto;
-
   display: grid;
   justify-content: end;
   grid-auto-flow: column;
   cursor: pointer;
   gap: 2.5em;
+  text-align: center;
 }
 
 .nav__link {
@@ -38,6 +38,7 @@
   font-weight: normal;
   cursor: pointer;
   color: white;
+  text-align: center;
 }
 .active {
   text-decoration: none;

@@ -53,7 +53,9 @@ export default function Tablas() {
           {days.map((day) => {
             return (
               <tr key={day.id}>
-                <td width="6%"> {day.value}</td>
+                <td className={styles.days} width="7%">
+                  {day.value}
+                </td>
                 <th>{entrenamiento[day.value].bicicleta.text}</th>
                 <th>{entrenamiento[day.value].calentamiento.text}</th>
                 <th>{entrenamiento[day.value].ejercicio_especifico.text}</th>

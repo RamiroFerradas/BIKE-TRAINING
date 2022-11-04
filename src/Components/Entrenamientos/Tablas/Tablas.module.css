@@ -9,7 +9,6 @@ td {
   border: 1px solid black;
   border-collapse: collapse;
   color: #000000;
-  font-weight: bold;
 }
 
 th,
@@ -71,4 +70,25 @@ textarea {
 .buttonExcel:focus,
 .buttonExcel:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media screen and (max-width: 1300px) {
+  .days {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .tabla {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .tabla {
+    font-size: 10px;
+    letter-spacing: 1px;
+    line-height: 10px;
+  }
+  .days {
+    font-size: 8px;
+  }
 }
