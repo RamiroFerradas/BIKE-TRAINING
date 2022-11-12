@@ -1,6 +1,6 @@
 const axios = require("axios");
 const e = require("express");
-const { Alumno, Entrenamiento } = require("../db");
+const { Alumno, Entrenamiento } = require("../../db");
 const { Op } = require("sequelize");
 
 const getAlumnos = async () => {

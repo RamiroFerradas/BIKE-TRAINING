@@ -1,11 +1,10 @@
 const axios = require("axios");
 const e = require("express");
 const { getAlumnos, getAlumnosName } = require("./getAlumnos");
-const { Alumno, Entrenamiento } = require("../db");
+const { Alumno } = require("../../db");
 
 const getAllAlumnos = async (req, res) => {
   let { nombre, apellido } = req.query;
-  console.log(apellido);
 
   try {
     nombre
@@ -25,6 +24,7 @@ const postAlumno = async (req, res) => {
       apellido,
       email,
     });
+
     res.send("Alumno creado correctamente");
   } catch (error) {
     console.error(error.message, "error en el post de alumno");

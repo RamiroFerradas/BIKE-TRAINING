@@ -9,7 +9,7 @@ module.exports = (sequelize) => {
     "entrenamiento",
     {
       Lunes: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.STRING,
       },
       Martes: {
         type: DataTypes.ARRAY(DataTypes.STRING),
@@ -37,8 +37,3 @@ module.exports = (sequelize) => {
     }
   );
 };
-
-/*
-
-
-*/
