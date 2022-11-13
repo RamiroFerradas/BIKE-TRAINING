@@ -10,7 +10,10 @@ const getEntrenamientos = async (req, res) => {
       order: ["id"],
       include: {
         model: Alumno,
-        attributes: ["nombre", "apellido"],
+        // attributes: ["name"],
+        through: {
+          attributes: [],
+        },
       },
     });
 
@@ -71,9 +74,6 @@ const updateEntrenamiento = async (req, res) => {
       }
     );
 
-    console.log(entrenamiento, "holis update activity");
-
-    console.log(`Actualizaste ${entrenamiento} actividad !`);
     res.send("Entrenamiento actualizado con exito !!");
   } catch (error) {
     console.log(error.message, "Error en el update");
