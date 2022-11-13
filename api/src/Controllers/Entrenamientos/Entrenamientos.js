@@ -1,8 +1,7 @@
 const axios = require("axios");
 const e = require("express");
 
-const { Entrenamiento } = require("../../db");
-const Alumno = require("../../models/Alumno");
+const { Entrenamiento, Alumno } = require("../../db");
 
 const getEntrenamientos = async (req, res) => {
   try {
@@ -10,7 +9,7 @@ const getEntrenamientos = async (req, res) => {
       order: ["id"],
       include: {
         model: Alumno,
-        // attributes: ["name"],
+        attributes: ["nombre", "apellido", "email"],
         through: {
           attributes: [],
         },
@@ -28,7 +27,7 @@ const getEntrenamientos = async (req, res) => {
 const postEntrenamiento = async (req, res) => {
   let { Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo, alumno } =
     req.body;
-  console.log(req.body);
+
   try {
     if (alumno) {
       const entrenamiento = await Entrenamiento.create({
@@ -52,7 +51,6 @@ const postEntrenamiento = async (req, res) => {
 };
 
 const updateEntrenamiento = async (req, res) => {
-  console.log("DSFSDF");
   let { id } = req.params;
   let { Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo } = req.body;
   try {
@@ -74,7 +72,7 @@ const updateEntrenamiento = async (req, res) => {
       }
     );
 
-    res.send("Entrenamiento actualizado con exito !!");
+    res.send(`Entrenamiento actualizado con exito !!--->${entrenamiento}`);
   } catch (error) {
     console.log(error.message, "Error en el update");
   }
