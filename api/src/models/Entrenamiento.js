@@ -9,25 +9,25 @@ module.exports = (sequelize) => {
     "entrenamiento",
     {
       Lunes: {
-        type: DataTypes.STRING,
+        type: DataTypes.JSONB,
       },
       Martes: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.JSONB,
       },
       Miercoles: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.JSONB,
       },
       Jueves: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.JSONB,
       },
       Viernes: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.JSONB,
       },
       Sabado: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.JSONB,
       },
       Domingo: {
-        type: DataTypes.ARRAY(DataTypes.STRING),
+        type: DataTypes.JSONB,
       },
     },
 
@@ -37,3 +37,8 @@ module.exports = (sequelize) => {
     }
   );
 };
+
+/*
+
+
+*/

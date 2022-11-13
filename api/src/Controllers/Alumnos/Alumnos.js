@@ -19,13 +19,19 @@ const postAlumno = async (req, res) => {
   try {
     nombre = nombre[0].toUpperCase() + nombre.slice(1);
     apellido = apellido[0].toUpperCase() + apellido.slice(1);
-    const alumno = await Alumno.create({
-      nombre,
-      apellido,
-      email,
+    const [row, created] = await Alumno.findOrCreate({
+      where: {
+        email,
+      },
+      defaults: { nombre, apellido },
     });
 
-    res.send("Alumno creado correctamente");
+    if (!created) {
+      throw new Error("El usuario ya existe");
+    } else {
+      res.send(row);
+      return "Usuario creador correctamente!";
+    }
   } catch (error) {
     console.error(error.message, "error en el post de alumno");
   }
