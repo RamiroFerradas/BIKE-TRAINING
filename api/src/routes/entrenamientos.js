@@ -10,7 +10,7 @@ const {
 const router = Router();
 
 router.get("/", getEntrenamientos);
-router.post("/", postEntrenamiento);
+router.post("/:id", postEntrenamiento);
 router.put("/:id", updateEntrenamiento);
 // router.get("/:id", getCountriesIdParams);
 

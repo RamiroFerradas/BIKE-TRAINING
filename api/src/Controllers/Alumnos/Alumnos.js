@@ -1,29 +1,41 @@
 const axios = require("axios");
 const e = require("express");
-const { getAlumnos, getAlumnosName } = require("./getAlumnos");
-const { Alumno } = require("../../db");
+const { getAlumnos, getAlumnosName, getAlumnosEmail } = require("./getAlumnos");
+const { Usuario } = require("../../db");
+const { textTransformation } = require("../../Utils/textTransformation");
 
 const getAllAlumnos = async (req, res) => {
-  let { nombre, apellido } = req.query;
-
+  let { nombre, apellido, email } = req.query;
+  console.log(req.query);
+  nombre = textTransformation(nombre);
+  apellido = textTransformation(apellido);
+  email = email?.toLowerCase();
   try {
-    nombre
-      ? res.json(await getAlumnosName(nombre, apellido))
-      : res.json(await getAlumnos());
+    if (nombre || email) {
+      nombre
+        ? res.json(await getAlumnosName(nombre, apellido))
+        : res.json(await getAlumnosEmail(email));
+    } else {
+      res.json(await getAlumnos());
+    }
   } catch (error) {
     console.error(error.message, "error en el pedido de alumnos");
   }
 };
+
 const postAlumno = async (req, res) => {
-  let { nombre, apellido, email } = req.body;
+  let { given_name, family_name, email } = req.body;
   try {
-    nombre = nombre[0].toUpperCase() + nombre.slice(1);
-    apellido = apellido[0].toUpperCase() + apellido.slice(1);
-    const [row, created] = await Alumno.findOrCreate({
+    family_name = textTransformation(family_name);
+    email = email?.toLowerCase();
+    const [row, created] = await Usuario.findOrCreate({
       where: {
         email,
       },
-      defaults: { nombre, apellido },
+      defaults: {
+        nombre: textTransformation(given_name),
+        apellido: textTransformation(family_name),
+      },
     });
 
     if (!created) {
@@ -37,7 +49,43 @@ const postAlumno = async (req, res) => {
   }
 };
 
+const updateAlumno = async (req, res) => {
+  let { id } = req.params;
+  let { localidad, horas_disponibles, categoria, objetivo, gimnasio, alumno } =
+    req.body;
+  console.log(req.body);
+
+  if (gimnasio.text === "false") {
+    gimnasio = false;
+  } else {
+    gimnasio = true;
+  }
+  try {
+    const usuario = await Usuario.update(
+      {
+        localidad: textTransformation(localidad.text),
+        horas_disponibles: textTransformation(horas_disponibles.text),
+        categoria: textTransformation(categoria.text),
+        objetivo: textTransformation(objetivo.text),
+        gimnasio,
+        alumno,
+      },
+
+      {
+        where: {
+          id,
+        },
+      }
+    );
+
+    res.send(`Alumno actualizado con exito !!--->${usuario}`);
+  } catch (error) {
+    console.log(error.message, "Error en el update");
+  }
+};
+
 module.exports = {
   getAllAlumnos,
   postAlumno,
+  updateAlumno,
 };

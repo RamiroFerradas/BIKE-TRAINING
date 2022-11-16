@@ -29,7 +29,7 @@ let sequelize =
         ssl: true,
       })
     : new Sequelize(
-        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/bikeTraining`,
+        `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`,
         {
           logging: false,
           native: false,
@@ -69,12 +69,12 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 // En sequelize.models están todos los modelos importados como propiedades
 // Para relacionarlos hacemos un destructuring
-const { Alumno, Entrenamiento } = sequelize.models;
+const { Usuario, Entrenamiento } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Alumno.belongsToMany(Entrenamiento, { through: "alumnos_entrenamientos" });
-Entrenamiento.belongsToMany(Alumno, { through: "alumnos_entrenamientos" });
+Usuario.belongsToMany(Entrenamiento, { through: "alumnos_entrenamientos" });
+Entrenamiento.belongsToMany(Usuario, { through: "alumnos_entrenamientos" });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

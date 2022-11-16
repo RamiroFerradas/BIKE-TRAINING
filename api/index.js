@@ -29,6 +29,6 @@ const { conn } = require("./src/db.js");
 
 conn.sync({ force: false }).then(() => {
   server.listen(process.env.PORT, () => {
-    console.log("TODO OK !! ESCUCHANDO!!");
+    console.log(`TODO OK !! ESCUCHANDO!! ${process.env.PORT}`);
   });
 });

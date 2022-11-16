@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   sequelize.define(
-    "alumno",
+    "usuario",
     {
       id: {
         type: DataTypes.UUID, // clave aleatoria unica
@@ -27,13 +27,25 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
       },
       objetivo: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
       },
       categoria: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
       },
       gimnasio: {
-        type: DataTypes.STRING,
+        type: DataTypes.BOOLEAN,
+      },
+      administrador: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+      entrenador: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
+      alumno: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
     },
     {

@@ -1,12 +1,12 @@
 const axios = require("axios");
 const e = require("express");
-const { Alumno, Entrenamiento } = require("../../db");
+const { Usuario, Entrenamiento } = require("../../db");
 const { Op } = require("sequelize");
 
 const getAlumnos = async () => {
   try {
     const alumnosDb = (
-      await Alumno.findAll({
+      await Usuario.findAll({
         order: ["nombre"],
         include: {
           model: Entrenamiento,
@@ -26,9 +26,9 @@ const getAlumnos = async () => {
     console.error(error.message, "error en en el pedido");
   }
 };
-const getAlumnosName = (async = (nombre, apellido) => {
+const getAlumnosName = async (nombre, apellido) => {
   try {
-    const alumno = Alumno.findOne({
+    const alumno = await Usuario.findOne({
       where: {
         nombre,
         apellido,
@@ -38,6 +38,30 @@ const getAlumnosName = (async = (nombre, apellido) => {
   } catch (error) {
     console.error(error.message);
   }
-});
+};
+const getAlumnosEmail = async (email) => {
+  console.log(email);
+  try {
+    const alumno = await Usuario.findOne({
+      where: {
+        email,
+      },
+      include: {
+        model: Entrenamiento,
+        // attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
+    if (alumno) {
+      return alumno;
+    } else {
+      throw new Error("No existe usuario con ese email");
+    }
+  } catch (error) {
+    console.log(error.message, "error en el pedido por email");
+  }
+};
 
-module.exports = { getAlumnos, getAlumnosName };
+module.exports = { getAlumnos, getAlumnosName, getAlumnosEmail };

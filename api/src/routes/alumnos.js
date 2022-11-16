@@ -1,12 +1,16 @@
 const { Router } = require("express");
 
-const { getAllAlumnos, postAlumno } = require("../Controllers/Alumnos/Alumnos");
+const {
+  getAllAlumnos,
+  postAlumno,
+  updateAlumno,
+} = require("../Controllers/Alumnos/Alumnos");
 // const { getCountriesIdParams } = require("../Controllers/Alumnos");
 
 const router = Router();
 
 router.get("/", getAllAlumnos);
 router.post("/", postAlumno);
-// router.get("/:id", getCountriesIdParams);
+router.put("/:id", updateAlumno);
 
 module.exports = router;

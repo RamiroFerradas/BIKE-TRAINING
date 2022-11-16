@@ -16,8 +16,6 @@ const getEntrenamientos = async (req, res) => {
       },
     });
 
-    // let result = entrenamiento.map((ele) => getActivitiesModel(ele));
-
     res.json(entrenamiento);
   } catch (error) {
     console.log(error.message, "error en el pedido de activities a la db");
@@ -25,11 +23,12 @@ const getEntrenamientos = async (req, res) => {
 };
 
 const postEntrenamiento = async (req, res) => {
-  let { Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo, alumno } =
-    req.body;
+  let { id } = req.params;
+  let { Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo } = req.body;
+  console.log(req.body, "asdrdasd");
 
   try {
-    if (alumno) {
+    if (id) {
       const entrenamiento = await Entrenamiento.create({
         Lunes,
         Martes,
@@ -39,7 +38,8 @@ const postEntrenamiento = async (req, res) => {
         Sabado,
         Domingo,
       });
-      await entrenamiento.addAlumno(alumno);
+
+      await entrenamiento.addUsuario(id);
 
       res.send("Entrenamiento creado correctamente");
     } else {
@@ -53,8 +53,15 @@ const postEntrenamiento = async (req, res) => {
 const updateEntrenamiento = async (req, res) => {
   let { id } = req.params;
   let { Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo } = req.body;
+  // Lunes = entrenamiento.Lunes;
+  // Martes = entrenamiento.Martes;
+  // Miercoles = entrenamiento.Miercoles;
+  // Jueves = entrenamiento.Jueves;
+  // Viernes = entrenamiento.Viernes;
+  // Sabado = entrenamiento.Sabado;
+  // Domingo = entrenamiento.Domingo;
   try {
-    const entrenamiento = await Entrenamiento.update(
+    const entrenamientoUpdate = await Entrenamiento.update(
       {
         Lunes,
         Martes,
