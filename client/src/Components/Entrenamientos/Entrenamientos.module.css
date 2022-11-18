@@ -1,5 +1,12 @@
 .body {
   text-align: center;
+  /* height: 100%; */
+  width: 100%;
+  background-image: url("../../../src/assets/1222966.jpg") !important;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
 }
 .body h3 {
   color: black;

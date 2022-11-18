@@ -4,6 +4,18 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 }
+.body {
+  height: 100vh;
+  width: 100%;
+  /* background-image: url("../../../src/assets/1222966.jpg") !important; */
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.507);
+  border-radius: 20px;
+  backdrop-filter: blur(1px);
+}
 
 .divForm {
   width: 300px;

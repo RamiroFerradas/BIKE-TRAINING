@@ -8,7 +8,7 @@ export default function Login() {
 
   return (
     <div className={styles.body}>
-      <img src={logo} alt="" />
+      <img src={logo} alt="logoDB" />
       <button
         onClick={() => loginWithRedirect()}
         className={styles.buttonlogin}

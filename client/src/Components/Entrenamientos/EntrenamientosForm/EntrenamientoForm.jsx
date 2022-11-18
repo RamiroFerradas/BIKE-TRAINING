@@ -1,12 +1,17 @@
 import React from "react";
 import styles from "./EntrenamientoForm.module.css";
 import FieldInput from "../Field/FieldInput";
-import { bicicletas, days } from "../Utils/Options";
 import useTraining from "../../../Hooks/useTraining";
+import { bicicletas, days } from "../../Utils/Options";
 
 export default function EntrenamientoForm() {
-  const { entrenamiento, day, handleChangueInput, handleDays, cabecera } =
+  const { entrenamiento, day, handleChangueInput, cabecera, setDay } =
     useTraining();
+
+  const handleDays = (e) => {
+    setDay({ text: e.target.value, error: false });
+    document.getElementById("myForm").reset();
+  };
 
   return (
     <div className={styles.body}>

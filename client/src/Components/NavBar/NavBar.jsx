@@ -3,11 +3,14 @@ import React, { useEffect } from "react";
 import styles from "./NavBar.module.css";
 import logo from "../../assets/logo.png";
 import { NavLink, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
+import useScreenSize from "../../Hooks/useScreenSize";
+import useFetchUser from "../../Hooks/useFetchUser";
 
 export default function NavBar() {
   const { user, logout } = useAuth0();
-  const { pathname } = useLocation();
-  useEffect(() => {}, []);
+  const { width } = useScreenSize();
+  const usuario = useFetchUser();
 
   return (
     <div>
@@ -15,6 +18,13 @@ export default function NavBar() {
         <div className={styles.navBar__logo}>
           <img className={styles.nav__img} src={logo} alt="logoDurandoBike" />
           <h1 className={styles.nav__title}>DURANDO TRAINING</h1>
+          {user?.picture && width <= 690 && (
+            <img
+              className={styles.imgUser}
+              src={user.picture ? user.picture : ""}
+              alt={user.given_name}
+            />
+          )}
         </div>
 
         <div className={styles.nav__list}>
@@ -24,7 +34,7 @@ export default function NavBar() {
             }
             to="/"
           >
-            CREAR ENTRENAMIENTO
+            {usuario.entrenador ? "CREAR ENTRENAMIENTO" : "PERFIL"}
           </NavLink>
           <NavLink
             className={({ isActive }) =>
@@ -37,12 +47,14 @@ export default function NavBar() {
           <NavLink className={styles.nav__link} onClick={() => logout()}>
             SALIR
           </NavLink>
-          {user.picture && (
-            <img
-              className={styles.imgUser}
-              src={user.picture}
-              alt={user.given_name}
-            />
+          {user?.picture && width > 690 && (
+            <div>
+              <img
+                className={styles.imgUser}
+                src={user.picture ? user.picture : ""}
+                alt={user.given_name}
+              />
+            </div>
           )}
         </div>
       </nav>

@@ -26,6 +26,7 @@ const getAlumnos = async () => {
     console.error(error.message, "error en en el pedido");
   }
 };
+
 const getAlumnosName = async (nombre, apellido) => {
   try {
     const alumno = await Usuario.findOne({

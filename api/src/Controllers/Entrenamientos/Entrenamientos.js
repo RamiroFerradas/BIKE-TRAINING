@@ -25,7 +25,6 @@ const getEntrenamientos = async (req, res) => {
 const postEntrenamiento = async (req, res) => {
   let { id } = req.params;
   let { Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo } = req.body;
-  console.log(req.body, "asdrdasd");
 
   try {
     if (id) {
@@ -53,33 +52,33 @@ const postEntrenamiento = async (req, res) => {
 const updateEntrenamiento = async (req, res) => {
   let { id } = req.params;
   let { Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo } = req.body;
-  // Lunes = entrenamiento.Lunes;
-  // Martes = entrenamiento.Martes;
-  // Miercoles = entrenamiento.Miercoles;
-  // Jueves = entrenamiento.Jueves;
-  // Viernes = entrenamiento.Viernes;
-  // Sabado = entrenamiento.Sabado;
-  // Domingo = entrenamiento.Domingo;
+
   try {
-    const entrenamientoUpdate = await Entrenamiento.update(
-      {
-        Lunes,
-        Martes,
-        Miercoles,
-        Jueves,
-        Viernes,
-        Sabado,
-        Domingo,
-      },
-
-      {
-        where: {
-          id,
+    if (id) {
+      const entrenamientoUpdate = await Entrenamiento.update(
+        {
+          Lunes,
+          Martes,
+          Miercoles,
+          Jueves,
+          Viernes,
+          Sabado,
+          Domingo,
         },
-      }
-    );
 
-    res.send(`Entrenamiento actualizado con exito !!--->${entrenamiento}`);
+        {
+          where: {
+            id,
+          },
+        }
+      );
+
+      res.send(
+        `Entrenamiento actualizado con exito !!--->${entrenamientoUpdate}`
+      );
+    } else {
+      res.send("Falta el id del alumno");
+    }
   } catch (error) {
     console.log(error.message, "Error en el update");
   }

@@ -8,7 +8,7 @@
   border-radius: 10px;
   padding: 1rem;
   background-color: #14364adf;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .errorContainer {

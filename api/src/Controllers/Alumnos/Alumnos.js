@@ -6,7 +6,7 @@ const { textTransformation } = require("../../Utils/textTransformation");
 
 const getAllAlumnos = async (req, res) => {
   let { nombre, apellido, email } = req.query;
-  console.log(req.query);
+
   nombre = textTransformation(nombre);
   apellido = textTransformation(apellido);
   email = email?.toLowerCase();

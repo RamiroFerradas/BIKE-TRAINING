@@ -36,6 +36,16 @@ let sequelize =
         }
       );
 
+sequelize.sync().then(
+  function () {
+    console.log("DB connection sucessful.");
+  },
+  function (err) {
+    // catch error here
+    console.log(err);
+  }
+);
+
 // const sequelize = new Sequelize(
 //   `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`,
 //   {

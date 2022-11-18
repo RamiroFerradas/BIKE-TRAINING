@@ -1,9 +1,9 @@
 import React from "react";
 import ReactHtmlTableToExcel from "react-html-table-to-excel";
+import { textTransformation } from "../../Utils/TextTransformation";
 import useTraining from "../../../Hooks/useTraining";
-import { days } from "../Utils/Options";
+import { days } from "../../Utils/Options";
 import styles from "./Tablas.module.css";
-import { textTransformation } from "../Utils/TextTransformation";
 
 export default function Tablas() {
   const { entrenamiento, cabecera } = useTraining();

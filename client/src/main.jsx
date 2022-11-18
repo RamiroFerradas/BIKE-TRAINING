@@ -5,6 +5,13 @@ import "./index.css";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { BrowserRouter } from "react-router-dom";
 import { TrainingProvider } from "./Context/TrainingContext";
+import { Provider } from "react-redux";
+import store from "./redux/store/index";
+import axios from "axios";
+
+const REACT_APP_API = import.meta.env.VITE_REACT_APP_API;
+
+axios.defaults.baseURL = REACT_APP_API || "http://localhost:3001";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Auth0Provider
@@ -13,9 +20,11 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     redirectUri={window.location.origin}
   >
     <BrowserRouter>
-      <TrainingProvider>
-        <App />
-      </TrainingProvider>
+      <Provider store={store}>
+        <TrainingProvider>
+          <App />
+        </TrainingProvider>
+      </Provider>
     </BrowserRouter>
   </Auth0Provider>
 );

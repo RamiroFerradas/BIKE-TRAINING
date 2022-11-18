@@ -8,6 +8,7 @@ import Home from "./Components/Home/Home";
 import NavBar from "./Components/NavBar/NavBar";
 import Alumnos from "./Components/Alumnos/Alumnos";
 import Loader from "./Components/Loader/Loader";
+import Perfil from "./Components/Perfil/Perfil";
 
 function App() {
   const { isLoading } = useAuth0();
@@ -19,8 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/alumnos" element={<Alumnos />}></Route>
-        <Route></Route>
-        <Route></Route>
+        {/* <Route path="/perfil/" element={<Perfil />}></Route> */}
       </Routes>
     </div>
   );

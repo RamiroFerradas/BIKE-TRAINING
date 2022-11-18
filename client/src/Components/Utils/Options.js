@@ -9,8 +9,8 @@ export const days = [
 ];
 
 export const bicicletas = [
-  { value: "MTB", id: "1" },
-  { value: "RUTERA", id: "2" },
-  { value: "CRONO", id: "3" },
-  { value: "GRAVEL", id: "4" },
+  { label: "MTB", id: "1" },
+  { label: "RUTERA", id: "2" },
+  { label: "CRONO", id: "3" },
+  { label: "GRAVEL", id: "4" },
 ];

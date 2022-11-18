@@ -16,3 +16,29 @@
   -webkit-text-size-adjust: 100%;
   font-family: "Quicksand";
 }
+
+body {
+  color: black;
+  width: 100%;
+  background-image: url("../src/assets/1222966.jpg") !important;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  min-height: 100% !important;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body,
+#fullheight {
+  min-height: 100% !important;
+  height: 100%;
+}
+#fullheight {
+  width: 250px;
+  background: blue;
+}
