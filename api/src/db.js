@@ -37,10 +37,10 @@ let sequelize =
       );
 
 sequelize.sync().then(
-  function () {
+  () => {
     console.log("DB connection sucessful.");
   },
-  function (err) {
+  (err) => {
     // catch error here
     console.log(err);
   }
