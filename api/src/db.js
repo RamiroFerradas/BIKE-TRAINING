@@ -4,9 +4,10 @@ const {
   DB_PASSWORD,
   DB_HOST,
   DB_NAME,
-  PORT,
+  DB_PORT,
   DB_NAME_DEP,
   DB_HOST_DEP,
+  DB_PORT_DEP,
   DB_USER_DEP,
   DB_PASSWORD_DEP,
 } = process.env;
@@ -20,7 +21,7 @@ let sequelize =
         database: DB_NAME_DEP,
         dialect: "postgres",
         host: DB_HOST_DEP,
-        port: 5432,
+        port: DB_PORT_DEP,
         username: DB_USER_DEP,
         password: DB_PASSWORD_DEP,
         pool: {
