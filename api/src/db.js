@@ -53,7 +53,7 @@ sequelize.sync().then(
   },
   (err) => {
     // catch error here
-    console.log(err);
+    console.log(err, "ERROR DB");
   }
 );
 
