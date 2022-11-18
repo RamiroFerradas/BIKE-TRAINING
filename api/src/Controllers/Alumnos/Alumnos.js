@@ -28,6 +28,7 @@ const postAlumno = async (req, res) => {
   try {
     family_name = textTransformation(family_name);
     email = email?.toLowerCase();
+    console.log(given_name);
     const [row, created] = await Usuario.findOrCreate({
       where: {
         email,
