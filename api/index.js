@@ -29,7 +29,7 @@ const { conn } = require("./src/db.js");
 
 const PORT = process.env.DB_PORT || process.env.DB_PORT_DEP;
 
-conn.sync({ force: false }).then(async () => {
+conn.sync({ force: true }).then(async () => {
   server.listen(PORT, () => {
     console.log(`TODO OK !! ESCUCHANDO!! PUERTO: ${PORT}`);
   });
