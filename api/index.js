@@ -27,8 +27,10 @@ const { conn } = require("./src/db.js");
 //   });
 // });
 
-conn.sync({ force: false }).then(() => {
-  server.listen(process.env.DB_PORT, () => {
-    console.log(`TODO OK !! ESCUCHANDO!! ${process.env.DB_PORT}`);
+const PORT = process.env.DB_PORT;
+
+conn.sync({ force: false }).then(async () => {
+  server.listen(await PORT, () => {
+    console.log(`TODO OK !! ESCUCHANDO!! PUERTO: ${PORT}`);
   });
 });
