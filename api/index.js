@@ -27,7 +27,7 @@ const { conn } = require("./src/db.js");
 //   });
 // });
 
-const PORT = process.env.DB_PORT || process.env.DB_PORT_DEP;
+const PORT = process.env.PORT;
 
 conn.sync({ force: false }).then(async () => {
   server.listen(PORT, () => {

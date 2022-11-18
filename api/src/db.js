@@ -4,10 +4,9 @@ const {
   DB_PASSWORD,
   DB_HOST,
   DB_NAME,
-  DB_PORT,
+  PORT,
   DB_NAME_DEP,
   DB_HOST_DEP,
-  DB_PORT_DEP,
   DB_USER_DEP,
   DB_PASSWORD_DEP,
 } = process.env;
