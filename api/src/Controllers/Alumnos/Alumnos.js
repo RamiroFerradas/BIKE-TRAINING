@@ -28,7 +28,6 @@ const postAlumno = async (req, res) => {
   try {
     family_name = textTransformation(family_name);
     email = email?.toLowerCase();
-
     const [row, created] = await Usuario.findOrCreate({
       where: {
         email,
@@ -36,6 +35,7 @@ const postAlumno = async (req, res) => {
       defaults: {
         nombre: textTransformation(given_name),
         apellido: textTransformation(family_name),
+        entrenador: email === "ramiferra97@gmail.com" && true,
       },
     });
 
