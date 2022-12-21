@@ -22,7 +22,12 @@ export default function Home() {
     }
   }, [user]);
 
-  if (loading && isLoading) {
+  const [flag, setFlag] = useState(false);
+  setTimeout(() => {
+    setFlag(true);
+  }, 500);
+
+  if (loading && isLoading && !flag) {
     return (
       <>
         <Loader />
