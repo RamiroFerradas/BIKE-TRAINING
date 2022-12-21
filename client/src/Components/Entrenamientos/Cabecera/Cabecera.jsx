@@ -101,7 +101,7 @@ export default function Cabecera() {
             type="text"
             name="localidad"
             onChange={handleChangueCabecera}
-            value={seleccionado.length ? seleccionado[0]?.localidad : ""}
+            defaultValue={seleccionado.length ? seleccionado[0]?.localidad : ""}
           />
         </FieldInput>
         <FieldInput
@@ -115,10 +115,9 @@ export default function Cabecera() {
             type="number"
             name="horas_disponibles"
             onChange={handleChangueCabecera}
-            value={
-              seleccionado.length ? seleccionado[0]?.horas_disponibles : ""
+            defaultValue={
+              seleccionado.length ? seleccionado[0]?.horas_disponibles : "0"
             }
-            defaultValue="0"
           />
         </FieldInput>
         <FieldInput
@@ -132,7 +131,7 @@ export default function Cabecera() {
             type="text"
             name="objetivo"
             onChange={handleChangueCabecera}
-            value={seleccionado.length ? seleccionado[0]?.objetivo : ""}
+            defaultValue={seleccionado.length ? seleccionado[0]?.objetivo : ""}
           />
         </FieldInput>
         <FieldInput
@@ -146,7 +145,7 @@ export default function Cabecera() {
             type="text"
             name="categoria"
             onChange={handleChangueCabecera}
-            value={seleccionado.length ? seleccionado[0]?.categoria : ""}
+            defaultValue={seleccionado.length ? seleccionado[0]?.categoria : ""}
           />
         </FieldInput>
         <FieldInput
@@ -158,7 +157,7 @@ export default function Cabecera() {
           <select
             disabled={disabled}
             name="gimnasio"
-            value={seleccionado.length ? seleccionado[0]?.gimnasio : ""}
+            defaultValue={seleccionado.length ? seleccionado[0]?.gimnasio : ""}
             onChange={(e) => {
               setCabecera({ ...cabecera, gimnasio: e.target.value });
             }}

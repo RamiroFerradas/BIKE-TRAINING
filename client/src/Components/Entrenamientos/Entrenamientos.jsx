@@ -18,6 +18,7 @@ export default function Entrenamientos() {
 
   const { entrenamiento, cabecera } = useTraining();
   const { seleccionado, view } = useSelected();
+  // console.log(seleccionado[0].entrenamiento[0].id);
   const handleEntrenamiento = () => {
     if (!seleccionado[0].entrenamientos[0].id) {
       dispatch(

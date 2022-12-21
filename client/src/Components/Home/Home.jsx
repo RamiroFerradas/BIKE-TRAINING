@@ -35,7 +35,7 @@ export default function Home() {
   ) : (
     <div className={style.body}>
       <NavBar />
-      {!usuario.entrenador ? <Entrenamientos /> : <Perfil />}
+      {usuario.entrenador ? <Entrenamientos /> : <Perfil />}
     </div>
   );
 }

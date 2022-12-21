@@ -28,7 +28,7 @@ const postAlumno = async (req, res) => {
   try {
     family_name = textTransformation(family_name);
     email = email?.toLowerCase();
-    console.log(given_name);
+
     const [row, created] = await Usuario.findOrCreate({
       where: {
         email,
@@ -49,19 +49,47 @@ const postAlumno = async (req, res) => {
     console.error(error.message, "error en el post de alumno");
   }
 };
+const deleteAlumno = async (req, res) => {
+  try {
+    const { email } = req.params;
+    const alumnoId = await Usuario.findOne({
+      where: { email },
+    });
+    if (alumnoId) {
+      await Usuario.destroy({
+        where: { email },
+      });
+      console.log(`Usuario '${alumnoId.nombre}' borrado con exito`);
+      res.json(`Usuario '${alumnoId.nombre}' borrado con exito`);
+    } else {
+      res.json("El alumno fue eliminado");
+    }
+  } catch (error) {
+    console.error(error.message, "error en el post de alumno");
+  }
+};
 
 const updateAlumno = async (req, res) => {
   let { id } = req.params;
-  let { localidad, horas_disponibles, categoria, objetivo, gimnasio, alumno } =
-    req.body;
+  let {
+    localidad,
+    horas_disponibles,
+    categoria,
+    objetivo,
+    gimnasio,
+    alumno,
+    entrenador,
+  } = req.body;
   console.log(req.body);
-
-  if (gimnasio.text === "false") {
-    gimnasio = false;
-  } else {
-    gimnasio = true;
-  }
   try {
+    if (gimnasio) {
+      if (gimnasio.text === "false") {
+        gimnasio = false;
+      } else {
+        gimnasio = true;
+      }
+    }
+
     const usuario = await Usuario.update(
       {
         localidad: textTransformation(localidad.text),
@@ -70,6 +98,7 @@ const updateAlumno = async (req, res) => {
         objetivo: textTransformation(objetivo.text),
         gimnasio,
         alumno,
+        entrenador,
       },
 
       {
@@ -88,5 +117,6 @@ const updateAlumno = async (req, res) => {
 module.exports = {
   getAllAlumnos,
   postAlumno,
+  deleteAlumno,
   updateAlumno,
 };

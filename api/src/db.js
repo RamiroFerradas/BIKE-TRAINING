@@ -1,16 +1,5 @@
 require("dotenv").config();
-const {
-  DB_USER,
-  DB_PASSWORD,
-  DB_HOST,
-  DB_NAME,
-  DB_PORT,
-  DB_NAME_DEP,
-  DB_HOST_DEP,
-  DB_PORT_DEP,
-  DB_USER_DEP,
-  DB_PASSWORD_DEP,
-} = process.env;
+const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, PORT } = process.env;
 const { Sequelize } = require("sequelize");
 const fs = require("fs");
 const path = require("path");
@@ -18,12 +7,12 @@ const path = require("path");
 let sequelize =
   process.env.NODE_ENV === "production"
     ? new Sequelize({
-        database: DB_NAME_DEP,
+        database: DB_NAME,
         dialect: "postgres",
-        host: DB_HOST_DEP,
-        port: DB_PORT_DEP,
-        username: DB_USER_DEP,
-        password: DB_PASSWORD_DEP,
+        host: DB_HOST,
+        port: PORT,
+        username: DB_USER,
+        password: DB_PASSWORD,
         pool: {
           max: 3,
           min: 1,

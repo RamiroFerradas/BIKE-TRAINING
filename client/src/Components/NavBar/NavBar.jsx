@@ -11,7 +11,6 @@ export default function NavBar() {
   const { user, logout } = useAuth0();
   const { width } = useScreenSize();
   const usuario = useFetchUser();
-
   return (
     <div>
       <nav className={styles.navBar}>
@@ -34,7 +33,7 @@ export default function NavBar() {
             }
             to="/"
           >
-            {usuario.entrenador ? "CREAR ENTRENAMIENTO" : "PERFIL"}
+            {usuario.usuario.entrenador ? "CREAR ENTRENAMIENTO" : "PERFIL"}
           </NavLink>
           <NavLink
             className={({ isActive }) =>

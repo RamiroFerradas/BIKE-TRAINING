@@ -41,11 +41,10 @@ export function fetchUsuario(email) {
 }
 
 export function updateALumno(payload) {
-  console.log(payload);
-
+  console.log(payload.id.text.value);
   return async function () {
     try {
-      const res = await axios.put(`/alumnos/${payload.id.text}`, payload);
+      const res = await axios.put(`/alumnos/${payload.id.text.value}`, payload);
       return res.data;
     } catch (error) {
       console.error(error.message, "error en el post del usuario: actions");
