@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect } from "react";
 import styles from "./NavBar.module.css";
 import logo from "../../assets/logo.png";
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useScreenSize from "../../Hooks/useScreenSize";
 import useFetchUser from "../../Hooks/useFetchUser";
@@ -14,18 +14,19 @@ export default function NavBar() {
   return (
     <div>
       <nav className={styles.navBar}>
-        <div className={styles.navBar__logo}>
-          <img className={styles.nav__img} src={logo} alt="logoDurandoBike" />
-          <h1 className={styles.nav__title}>DURANDO TRAINING</h1>
-          {user?.picture && width <= 690 && (
-            <img
-              className={styles.imgUser}
-              src={user.picture ? user.picture : ""}
-              alt={user.given_name}
-            />
-          )}
-        </div>
-
+        <Link to="/" className={styles.link}>
+          <div className={styles.navBar__logo}>
+            <img className={styles.nav__img} src={logo} alt="logoDurandoBike" />
+            <h1 className={styles.nav__title}>DURANDO TRAINING</h1>
+            {user?.picture && width <= 690 && (
+              <img
+                className={styles.imgUser}
+                src={user.picture ? user.picture : ""}
+                alt={user.given_name}
+              />
+            )}
+          </div>
+        </Link>
         <div className={styles.nav__list}>
           <NavLink
             className={({ isActive }) =>

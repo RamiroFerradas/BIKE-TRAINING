@@ -20,6 +20,10 @@
 
 .nav__title {
   margin: 0 10px;
+  color: white;
+}
+.link {
+  text-decoration: none;
 }
 .nav__list {
   padding: 0;
