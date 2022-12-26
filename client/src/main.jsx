@@ -10,7 +10,9 @@ import store from "./redux/store/index";
 import axios from "axios";
 
 const REACT_APP_API = import.meta.env.VITE_REACT_APP_API;
-axios.defaults.baseURL = REACT_APP_API || "http://localhost:3001";
+axios.defaults.baseURL =
+  // REACT_APP_API ||
+  "http://localhost:3001";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Auth0Provider
