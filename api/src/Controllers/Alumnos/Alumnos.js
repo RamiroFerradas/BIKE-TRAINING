@@ -35,7 +35,10 @@ const postAlumno = async (req, res) => {
       defaults: {
         nombre: textTransformation(given_name),
         apellido: textTransformation(family_name),
-        entrenador: email === "ramiferra97@gmail.com" && true,
+        entrenador:
+          email === "ramiferra97@gmail.com" || "gabriel_durando@hotmail.com"
+            ? true
+            : false,
       },
     });
 
