@@ -1,7 +1,4 @@
 .body {
-  background-color: rgba(0, 0, 0, 0.507);
-  border-radius: 20px;
-  backdrop-filter: blur(1px);
 }
 .body form {
   display: grid;

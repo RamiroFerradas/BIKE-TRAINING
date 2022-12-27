@@ -1,25 +1,13 @@
 .tabla {
   width: 100%;
 }
-.body {
-  /* height: 100vh; */
-  width: 100%;
-  /* background-image: url("../../../src/assets/1222966.jpg") !important; */
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: cover;
-  background-color: rgba(0, 0, 0, 0.507);
-  border-radius: 20px;
-  backdrop-filter: blur(1px);
-}
 
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid #f7f6f6;
   border-collapse: collapse;
-  color: #000000;
+  color: #f7f6f6;
 }
 
 th,
@@ -37,12 +25,6 @@ th {
   height: 150px;
 }
 
-span {
-  /* width: 100%;
-  height: 40vh; */
-  /* font-size: 6vmin !important;
-  white-space: pre-wrap; */
-}
 .cabecera1 {
   display: flex;
   justify-content: space-around;
@@ -105,4 +87,7 @@ textarea {
   .days {
     font-size: 8px;
   }
+}
+.bodyOff {
+  display: none;
 }

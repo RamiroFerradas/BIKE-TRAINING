@@ -7,7 +7,6 @@ import { bicicletas, days } from "../../Utils/Options";
 export default function EntrenamientoForm() {
   const { entrenamiento, day, handleChangueInput, cabecera, setDay } =
     useTraining();
-
   const handleDays = (e) => {
     setDay({ text: e.target.value, error: false });
     document.getElementById("myForm").reset();
@@ -37,11 +36,18 @@ export default function EntrenamientoForm() {
             text="Bicicleta:"
             textWrong=""
           >
-            <select name="bicicleta" id="bici" onChange={handleChangueInput}>
+            <select
+              name="bicicleta"
+              id="bici"
+              onChange={handleChangueInput}
+              defaultChecked={entrenamiento}
+              // value={entrenamiento[day.text]?.bicicleta.text}
+            >
+              <option>Seleccionar</option>
               {bicicletas.map((bici) => {
                 return (
-                  <option key={bici.id} id={bici.id} value={bici.value}>
-                    {bici.value}
+                  <option key={bici.id} id={bici.id} value={bici.label}>
+                    {bici?.label}
                   </option>
                 );
               })}

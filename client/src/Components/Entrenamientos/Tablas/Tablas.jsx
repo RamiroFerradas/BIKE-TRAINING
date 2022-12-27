@@ -5,11 +5,11 @@ import useTraining from "../../../Hooks/useTraining";
 import { days } from "../../Utils/Options";
 import styles from "./Tablas.module.css";
 
-export default function Tablas() {
+export default function Tablas({ preview }) {
   const { entrenamiento, cabecera } = useTraining();
 
   return (
-    <div className={styles.body}>
+    <div className={preview ? styles.body : styles.bodyOff}>
       <table id="tablaEntrenamientos" className={styles.tabla}>
         <tbody>
           {/* CABECERA */}
@@ -117,14 +117,6 @@ export default function Tablas() {
           })}
         </tbody>
       </table>
-
-      <ReactHtmlTableToExcel
-        className={styles.buttonExcel}
-        filename={`${cabecera.planilla.text}` || "Durando_Training"}
-        table="tablaEntrenamientos"
-        sheet="pagina 1"
-        buttonText="Descargar excel"
-      />
     </div>
   );
 }

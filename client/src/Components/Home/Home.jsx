@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useFetchUser from "../../Hooks/useFetchUser";
 import { fetchUsuario, postAlumno } from "../../redux/actions/alumnos";
+import Cabecera from "../Entrenamientos/Cabecera/Cabecera";
 import Entrenamientos from "../Entrenamientos/Entrenamientos";
 import Loader from "../Loader/Loader";
 import Login from "../Login/Login";
@@ -13,38 +14,33 @@ import style from "./Home.module.css";
 export default function Home() {
   const dispatch = useDispatch();
   const { isAuthenticated, isLoading, loginWithRedirect, user } = useAuth0();
+  const [flag, setFlag] = useState(false);
 
   const { usuario, loading } = useFetchUser();
   useEffect(() => {
-    if (isAuthenticated) {
-      dispatch(postAlumno(user));
-      dispatch(fetchUsuario(user.email));
-    }
+    dispatch(postAlumno(user));
+    setTimeout(() => {
+      setFlag(true);
+    }, 500);
   }, [user]);
-  const [flag, setFlag] = useState(false);
-  console.log(usuario);
-  setTimeout(() => {
-    setFlag(true);
-  }, 800);
-
-  // if (!flag || loading || isLoading) {
-  //   return (
-  //     <>
-  //       <Loader />
-  //     </>
-  //   );
-  // }
 
   return !isAuthenticated ? (
     <Login />
   ) : (
-    <div className={style.body}>
+    <div className={style.container}>
       {!flag || loading || isLoading ? (
         <Loader />
       ) : (
         <>
           <NavBar />
-          {usuario.entrenador ? <Entrenamientos /> : <Perfil />}
+          {usuario.entrenador ? (
+            <div className={style.entrenamiento}>
+              <Cabecera />
+              <Entrenamientos />
+            </div>
+          ) : (
+            <Perfil />
+          )}
         </>
       )}
     </div>

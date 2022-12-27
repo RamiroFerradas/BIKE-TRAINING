@@ -12,13 +12,18 @@ import {
   updateEntrenamiento,
 } from "../../redux/actions/entrenamiento";
 import useFetchUser from "../../Hooks/useFetchUser";
+import { Button, Container } from "react-bootstrap";
+import ReactHtmlTableToExcel from "react-html-table-to-excel";
 
 export default function Entrenamientos() {
   const dispatch = useDispatch();
 
   const { entrenamiento, cabecera } = useTraining();
   const { seleccionado, view } = useSelected();
+
+  const [preview, setPreview] = useState(false);
   // console.log(seleccionado[0].entrenamiento[0].id);
+  console.log(entrenamiento);
   const handleEntrenamiento = () => {
     if (!seleccionado[0].entrenamientos[0].id) {
       dispatch(
@@ -36,16 +41,33 @@ export default function Entrenamientos() {
 
   return (
     <div className={styles.body}>
-      <h3>CREA UN ENTRENAMIENTO</h3>
-      <div className={styles.container}>
-        <Cabecera />
-      </div>
       {view && seleccionado[0]?.alumno && (
-        <div>
+        <>
+          <p className="display-4 text-light  p-2  text-center">
+            <strong>CREA UN ENTRENAMIENTO</strong>
+          </p>
           <EntrenamientoForm />
-          <Tablas />
-          <button onClick={handleEntrenamiento}>CARGAR ENTRENAMIENTO</button>
-        </div>
+          <Container fluid>
+            <Button variant="warning" onClick={() => setPreview(!preview)}>
+              <span>{!preview ? `VISTA PREVIA` : `CERRAR VISTA PREVIA`}</span>
+            </Button>
+            {<Tablas preview={preview} />}
+            <ReactHtmlTableToExcel
+              className="btn btn-success"
+              filename={`${cabecera.planilla.text}` || "Durando_Training"}
+              table="tablaEntrenamientos"
+              sheet="pagina 1"
+              buttonText="Descargar excel"
+            />
+            <Button
+              className="pl-4"
+              variant="warning"
+              onClick={handleEntrenamiento}
+            >
+              CARGAR ENTRENAMIENTO
+            </Button>
+          </Container>
+        </>
       )}
     </div>
   );
