@@ -36,14 +36,16 @@ export default function NavBar() {
           >
             {usuario.usuario.entrenador ? "CREAR ENTRENAMIENTO" : "PERFIL"}
           </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? styles.active : styles.nav__link
-            }
-            to="/alumnos"
-          >
-            ALUMNOS
-          </NavLink>
+          {usuario.usuario.entrenador && (
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? styles.active : styles.nav__link
+              }
+              to="/alumnos"
+            >
+              ALUMNOS
+            </NavLink>
+          )}
           <NavLink className={styles.nav__link} onClick={() => logout()}>
             SALIR
           </NavLink>

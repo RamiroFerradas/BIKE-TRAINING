@@ -11,7 +11,7 @@ import axios from "axios";
 
 const REACT_APP_API = import.meta.env.VITE_REACT_APP_API;
 axios.defaults.baseURL = REACT_APP_API || "http://localhost:3001";
-
+console.log(REACT_APP_API);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Auth0Provider
     domain="dev-usdtec3d.us.auth0.com"

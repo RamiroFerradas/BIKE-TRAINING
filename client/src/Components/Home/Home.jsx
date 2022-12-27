@@ -15,7 +15,6 @@ export default function Home() {
   const { isAuthenticated, isLoading, loginWithRedirect, user } = useAuth0();
 
   const { usuario, loading } = useFetchUser();
-  console.log(usuario);
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(postAlumno(user));
