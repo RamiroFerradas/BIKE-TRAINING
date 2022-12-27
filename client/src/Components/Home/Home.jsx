@@ -20,13 +20,13 @@ export default function Home() {
       dispatch(postAlumno(user));
     }
   }, [user]);
-
   const [flag, setFlag] = useState(false);
+
   setTimeout(() => {
     setFlag(true);
-  }, 500);
+  }, 800);
 
-  if (loading && isLoading && !flag) {
+  if (!flag || loading || isLoading) {
     return (
       <>
         <Loader />
