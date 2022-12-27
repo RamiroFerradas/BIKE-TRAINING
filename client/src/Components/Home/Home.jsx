@@ -27,20 +27,26 @@ export default function Home() {
     setFlag(true);
   }, 800);
 
-  if (!flag || loading || isLoading) {
-    return (
-      <>
-        <Loader />
-      </>
-    );
-  }
+  // if (!flag || loading || isLoading) {
+  //   return (
+  //     <>
+  //       <Loader />
+  //     </>
+  //   );
+  // }
 
   return !isAuthenticated ? (
     <Login />
   ) : (
     <div className={style.body}>
-      <NavBar />
-      {usuario.entrenador ? <Entrenamientos /> : <Perfil />}
+      {!flag || loading || isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <NavBar />
+          {usuario.entrenador ? <Entrenamientos /> : <Perfil />}
+        </>
+      )}
     </div>
   );
 }
