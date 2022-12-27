@@ -64,7 +64,7 @@ export default function Cabecera() {
       id: { text: e, error: false },
     });
   };
-
+  console.log("");
   return (
     <div className={styles.body}>
       <form action="">
