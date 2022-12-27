@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useFetchUser from "../../Hooks/useFetchUser";
-import { postAlumno } from "../../redux/actions/alumnos";
+import { fetchUsuario, postAlumno } from "../../redux/actions/alumnos";
 import Entrenamientos from "../Entrenamientos/Entrenamientos";
 import Loader from "../Loader/Loader";
 import Login from "../Login/Login";
@@ -18,10 +18,11 @@ export default function Home() {
   useEffect(() => {
     if (isAuthenticated) {
       dispatch(postAlumno(user));
+      dispatch(fetchUsuario(user.email));
     }
   }, [user]);
   const [flag, setFlag] = useState(false);
-
+  console.log(usuario);
   setTimeout(() => {
     setFlag(true);
   }, 800);

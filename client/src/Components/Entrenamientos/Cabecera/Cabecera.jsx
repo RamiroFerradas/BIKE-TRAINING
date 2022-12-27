@@ -25,7 +25,7 @@ export default function Cabecera() {
   const { user } = useAuth0();
   const { cabecera, setCabecera, handleChangueCabecera } = useTraining();
 
-  const [disabled, setDisabled] = useState(true);
+  const [disabled, setDisabled] = useState(false);
   const [editButton, setEditButton] = useState(false);
 
   const options = alumnos?.map((e) => {
@@ -34,15 +34,13 @@ export default function Cabecera() {
       label: `${e.nombre} ${e.apellido}`,
     };
   });
-  console.log(disabled);
   useEffect(() => {
     if (cabecera.id.text === "" || cabecera.id.text === null) {
       setCabecera({ ...cabecera, id: { error: true } });
     }
-    if (!seleccionado[0]?.alumno) {
-      setDisabled(false);
-    }
-  }, [cabecera.id, seleccionado]);
+    !seleccionado[0]?.alumno ? setDisabled(false) : setDisabled(true);
+    console.log(disabled);
+  }, [cabecera.id, seleccionado[0]]);
 
   const handleEdit = (e) => {
     e.preventDefault();
@@ -64,7 +62,6 @@ export default function Cabecera() {
       id: { text: e, error: false },
     });
   };
-  console.log("");
   return (
     <div className={styles.body}>
       <form action="">
@@ -83,7 +80,7 @@ export default function Cabecera() {
           textWrong="Selecciona un alumno"
         >
           <Select
-            disabled={!disabled}
+            disabled={disabled}
             closeMenuOnSelect={true}
             components={animatedComponents}
             // value={selectedOption}
@@ -101,7 +98,7 @@ export default function Cabecera() {
           textWrong=""
         >
           <input
-            disabled={!disabled}
+            disabled={disabled}
             type="text"
             name="localidad"
             onChange={handleChangueCabecera}
@@ -115,7 +112,7 @@ export default function Cabecera() {
           textWrong=""
         >
           <input
-            disabled={!disabled}
+            disabled={disabled}
             type="number"
             name="horas_disponibles"
             onChange={handleChangueCabecera}
@@ -131,7 +128,7 @@ export default function Cabecera() {
           textWrong=""
         >
           <input
-            disabled={!disabled}
+            disabled={disabled}
             type="text"
             name="objetivo"
             onChange={handleChangueCabecera}
@@ -145,7 +142,7 @@ export default function Cabecera() {
           textWrong=""
         >
           <input
-            disabled={!disabled}
+            disabled={disabled}
             type="text"
             name="categoria"
             onChange={handleChangueCabecera}
@@ -159,7 +156,7 @@ export default function Cabecera() {
           textWrong=""
         >
           <select
-            disabled={!disabled}
+            disabled={disabled}
             name="gimnasio"
             defaultValue={seleccionado.length ? seleccionado[0]?.gimnasio : ""}
             onChange={(e) => {
@@ -173,7 +170,8 @@ export default function Cabecera() {
         <div>
           {seleccionado[0]?.alumno && (
             <>
-              {!disabled ? (
+              {console.log(seleccionado[0])}
+              {disabled ? (
                 <Button variant="warning" onClick={handleEditAlumno}>
                   EDITAR ALUMNO
                 </Button>

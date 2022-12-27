@@ -9,8 +9,10 @@ import { Provider } from "react-redux";
 import store from "./redux/store/index";
 import axios from "axios";
 
-const REACT_APP_API = import.meta.env.VITE_REACT_APP_API;
-axios.defaults.baseURL = REACT_APP_API || "http://localhost:3001";
+axios.defaults.baseURL =
+  "http://localhost:3001" || import.meta.env.VITE_REACT_APP_API;
+
+console.log(axios.defaults.baseURL);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Auth0Provider
     domain="dev-usdtec3d.us.auth0.com"
