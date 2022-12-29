@@ -41,7 +41,6 @@ export function fetchUsuario(email) {
 }
 
 export function updateALumno(payload) {
-  console.log(payload.id.text.value);
   return async function () {
     try {
       const res = await axios.put(`/alumnos/${payload.id.text.value}`, payload);

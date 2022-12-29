@@ -5,22 +5,28 @@
   padding: 1.5em 5%;
   border-bottom-right-radius: 15%;
   border-bottom-left-radius: 15%;
-  display: grid;
+  /* display: grid; */
   gap: 1.5em;
-  align-items: center;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(300px, 2fr)); */
   font-family: "Quicksand";
 }
+
 .navBar__logo {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto;
 }
-
+.offcanvas_menu {
+  background-color: #d5d4d4;
+}
+.offcanvas_menu_header {
+  background-color: #14364adf;
+}
 .nav__title {
-  margin: 0 10px;
+  /* margin: 0 10px; */
   color: white;
+  /* max-width: 20vw; */
 }
 .link {
   text-decoration: none;
@@ -52,8 +58,8 @@
   color: #ff7b00;
 }
 .nav__img {
-  width: 50px;
-  height: 50px;
+  max-width: 70px;
+  max-height: 70px;
 }
 
 .imgUser {

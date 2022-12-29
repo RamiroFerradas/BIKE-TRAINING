@@ -13,8 +13,9 @@ td {
 th,
 td {
   padding: 10px;
-  max-width: 30px;
+  max-width: 8vw;
 }
+td,
 th {
   height: 10vh;
   word-wrap: break-word;

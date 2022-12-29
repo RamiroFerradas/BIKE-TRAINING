@@ -24,6 +24,7 @@ export default function Cabecera() {
   const { alumnos } = useFetchAlumnos();
   const { user } = useAuth0();
   const { cabecera, setCabecera, handleChangueCabecera } = useTraining();
+  console.log(alumnos);
 
   const [disabled, setDisabled] = useState(false);
   const [editButton, setEditButton] = useState(false);
@@ -39,7 +40,6 @@ export default function Cabecera() {
       setCabecera({ ...cabecera, id: { error: true } });
     }
     !seleccionado[0]?.alumno ? setDisabled(false) : setDisabled(true);
-    console.log(disabled);
   }, [cabecera.id, seleccionado[0]]);
 
   const handleEdit = (e) => {
@@ -170,7 +170,6 @@ export default function Cabecera() {
         <div>
           {seleccionado[0]?.alumno && (
             <>
-              {console.log(seleccionado[0])}
               {disabled ? (
                 <Button variant="warning" onClick={handleEditAlumno}>
                   EDITAR ALUMNO

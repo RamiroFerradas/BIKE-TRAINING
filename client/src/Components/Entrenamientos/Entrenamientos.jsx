@@ -15,6 +15,21 @@ import useFetchUser from "../../Hooks/useFetchUser";
 import { Button, Container } from "react-bootstrap";
 import ReactHtmlTableToExcel from "react-html-table-to-excel";
 
+// ReactHTMLTableToExcel.format = (s, c) => {
+//   if (c && c["table"]) {
+//     const html = c.table;
+//     const parser = new DOMParser();
+//     const doc = parser.parseFromString(html, "text/html");
+//     const rows = doc.querySelectorAll("tr");
+
+//     for (const row of rows) row.removeChild(row.firstChild);
+
+//     c.table = doc.querySelector("table").outerHTML;
+//   }
+
+//   return s.replace(/{(\w+)}/g, (m, p) => c[p]);
+// };
+
 export default function Entrenamientos() {
   const dispatch = useDispatch();
 
@@ -22,8 +37,6 @@ export default function Entrenamientos() {
   const { seleccionado, view } = useSelected();
 
   const [preview, setPreview] = useState(false);
-  // console.log(seleccionado[0].entrenamiento[0].id);
-  console.log(entrenamiento);
   const handleEntrenamiento = () => {
     if (!seleccionado[0].entrenamientos[0].id) {
       dispatch(
@@ -52,9 +65,12 @@ export default function Entrenamientos() {
               <span>{!preview ? `VISTA PREVIA` : `CERRAR VISTA PREVIA`}</span>
             </Button>
             {<Tablas preview={preview} />}
+
             <ReactHtmlTableToExcel
               className="btn btn-success"
-              filename={`${cabecera.planilla.text}` || "Durando_Training"}
+              filename={
+                `${cabecera.planilla.text}` || "Durando_Training" + `.xlsx`
+              }
               table="tablaEntrenamientos"
               sheet="pagina 1"
               buttonText="Descargar excel"

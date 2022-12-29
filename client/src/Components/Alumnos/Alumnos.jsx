@@ -7,7 +7,6 @@ import style from "./Alumnos.module.css";
 
 export default function Alumnos() {
   const { loading, alumnos } = useFetchAlumnos();
-  console.log(alumnos);
   return loading ? (
     <Loader />
   ) : (

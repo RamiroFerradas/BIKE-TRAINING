@@ -10,7 +10,7 @@ export default function Tablas({ preview }) {
 
   return (
     <div className={preview ? styles.body : styles.bodyOff}>
-      <table id="tablaEntrenamientos" className={styles.tabla}>
+      <table id="tablaEntrenamientos" className="table">
         <tbody>
           {/* CABECERA */}
           <tr>
@@ -59,14 +59,14 @@ export default function Tablas({ preview }) {
           </tr>
 
           <tr className={styles.tableHead}>
-            <td>Dia</td>
-            <th>Bicicleta</th>
-            <th>Calentamiento</th>
-            <th>Ejercicio Especifico</th>
-            <th>Descansos</th>
-            <th>Rodada final</th>
-            <th>Horas estimadas</th>
-            <th>Tipo de entrenamiento</th>
+            <th scope="col">Dia</th>
+            <th scope="col">Bicicleta</th>
+            <th scope="col">Calentamiento</th>
+            <th scope="col">Ejercicio Especifico</th>
+            <th scope="col">Descansos</th>
+            <th scope="col">Rodada final</th>
+            <th scope="col">Horas estimadas</th>
+            <th scope="col">Tipo de entrenamiento</th>
             {cabecera.gimnasio.text === "Si" && <th>Gimnasio</th>}
           </tr>
 
@@ -75,42 +75,64 @@ export default function Tablas({ preview }) {
           {days.map((day) => {
             return (
               <tr key={day.id}>
-                <td className={styles.days} width="7%">
+                <th scope="row" className={styles.days} width="7%">
                   {day.value}
+                </th>
+                <td>
+                  <p className="font-monospace lh-1">
+                    {textTransformation(
+                      entrenamiento[day.value].bicicleta.text
+                    )}
+                  </p>
                 </td>
-                <th>
-                  {textTransformation(entrenamiento[day.value].bicicleta.text)}
-                </th>
-                <th>
-                  {textTransformation(
-                    entrenamiento[day.value].calentamiento.text
-                  )}
-                </th>
-                <th>
-                  {textTransformation(
-                    entrenamiento[day.value].ejercicio_especifico.text
-                  )}
-                </th>
-                <th>
-                  {textTransformation(entrenamiento[day.value].descansos.text)}
-                </th>
-                <th>
-                  {textTransformation(
-                    entrenamiento[day.value].rodada_final.text
-                  )}
-                </th>
-                <th>
-                  {textTransformation(
-                    entrenamiento[day.value].horas_estimadas.text
-                  )}
-                </th>
-                <th>
-                  {textTransformation(
-                    entrenamiento[day.value].tipo_entrenamiento.text
-                  )}
-                </th>
+                <td>
+                  <p className="font-monospace lh-1">
+                    {textTransformation(
+                      entrenamiento[day.value].calentamiento.text
+                    )}
+                  </p>
+                </td>
+                <td>
+                  <p className="font-monospace lh-1">
+                    {textTransformation(
+                      entrenamiento[day.value].ejercicio_especifico.text
+                    )}
+                  </p>
+                </td>
+                <td>
+                  <p className="font-monospace lh-1">
+                    {textTransformation(
+                      entrenamiento[day.value].descansos.text
+                    )}
+                  </p>
+                </td>
+                <td>
+                  <p className="font-monospace lh-1">
+                    {textTransformation(
+                      entrenamiento[day.value].rodada_final.text
+                    )}
+                  </p>
+                </td>
+                <td>
+                  <p className="font-monospace lh-1">
+                    {textTransformation(
+                      entrenamiento[day.value].horas_estimadas.text
+                    )}
+                  </p>
+                </td>
+                <td>
+                  <p className="font-monospace lh-1">
+                    {textTransformation(
+                      entrenamiento[day.value].tipo_entrenamiento.text
+                    )}
+                  </p>
+                </td>
                 {cabecera.gimnasio.text === "Si" && (
-                  <th>{entrenamiento[day.value].gym.text}</th>
+                  <td>
+                    <p className="font-monospace lh-1">
+                      {entrenamiento[day.value].gym.text}
+                    </p>
+                  </td>
                 )}
               </tr>
             );
