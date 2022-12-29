@@ -76,9 +76,11 @@ const updateAlumno = async (req, res) => {
   let { id } = req.params;
   let {
     localidad,
+    provincia,
     horas_disponibles,
     categoria,
     objetivo,
+    telefono,
     gimnasio,
     alumno,
     entrenador,
@@ -96,7 +98,9 @@ const updateAlumno = async (req, res) => {
     const usuario = await Usuario.update(
       {
         localidad: textTransformation(localidad.text),
-        horas_disponibles: textTransformation(horas_disponibles.text),
+        provincia: textTransformation(provincia.text),
+        horas_disponibles,
+        horas_disponibles,
         categoria: textTransformation(categoria.text),
         objetivo: textTransformation(objetivo.text),
         gimnasio,

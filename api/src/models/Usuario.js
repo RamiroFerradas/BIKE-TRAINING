@@ -23,6 +23,12 @@ module.exports = (sequelize) => {
       localidad: {
         type: DataTypes.STRING,
       },
+      provincia: {
+        type: DataTypes.STRING,
+      },
+      telefono: {
+        type: DataTypes.INTEGER,
+      },
       horas_disponibles: {
         type: DataTypes.INTEGER,
       },

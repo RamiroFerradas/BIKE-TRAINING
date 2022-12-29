@@ -28,7 +28,6 @@ export default function Perfil() {
     loginWithRedirect()
   ) : (
     <>
-      <NavBar />
       <div className="container">
         <div className="main-body">
           <div className="row gutters-sm">
