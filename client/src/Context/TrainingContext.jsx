@@ -11,6 +11,8 @@ export const TrainingProvider = ({ children }) => {
     planilla: { text: "", error: false },
     alumno: true,
     localidad: { text: "", error: false },
+    provincia: { text: "", error: false },
+    telefono: { text: 0, error: false },
     horas_disponibles: { text: 0, error: false },
     objetivo: { text: "", error: false },
     categoria: { text: "", error: false },
@@ -106,7 +108,7 @@ export const TrainingProvider = ({ children }) => {
       return {
         ...state,
         [e.target.name]: {
-          text: textTransformation(e.target.value),
+          text: textTransformation(e.target.value.trim()),
           error: false,
         },
       };

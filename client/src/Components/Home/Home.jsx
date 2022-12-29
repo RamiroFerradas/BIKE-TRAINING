@@ -28,18 +28,20 @@ export default function Home() {
     <Login />
   ) : (
     <div className={style.container}>
-      {!flag || loading || isLoading ? (
+      <NavBar />
+      {!flag ? (
         <Loader />
       ) : (
         <>
-          <NavBar />
           {usuario.entrenador ? (
-            <div className={style.entrenamiento}>
+            <>
               <Cabecera />
               <Entrenamientos />
-            </div>
+            </>
           ) : (
-            <Perfil />
+            <>
+              <Perfil />
+            </>
           )}
         </>
       )}

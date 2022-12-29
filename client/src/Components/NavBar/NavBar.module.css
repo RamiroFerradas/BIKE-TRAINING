@@ -18,9 +18,10 @@
   margin: 0 auto;
 }
 .offcanvas_menu {
-  /* background-color: #d5d4d4; */
+  background-color: #14364adf;
 }
 .offcanvas_menu_header {
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.159);
   background-color: #14364adf;
 }
 .nav__title {
@@ -43,13 +44,34 @@
   text-align: center;
   align-items: center;
 }
-
+.divImg {
+  /* width: 50vw; */
+  background-color: red;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.dropDownBG {
+  /* background-color: red; */
+}
 .nav__link {
   text-decoration: none;
   font-weight: normal;
   cursor: pointer;
   color: white;
   text-align: center;
+}
+.nav__link__dropdown {
+  text-decoration: none;
+  font-weight: normal;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .active {
   text-decoration: none;

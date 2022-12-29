@@ -17,7 +17,7 @@ import {
 export default function NavBar() {
   const { user, logout } = useAuth0();
   const { width } = useScreenSize();
-  const usuario = useFetchUser();
+  const { usuario } = useFetchUser();
   const expand = "lg";
   let img = (
     <img
@@ -35,7 +35,7 @@ export default function NavBar() {
         // className={styles.navBar}
         expand="lg"
         variant="light"
-        className={`d-flex justify-content-between ${styles.navBar}`}
+        className={`d-flex justify-content-between align-items-center ${styles.navBar}`}
       >
         <Container fluid>
           {img}
@@ -57,34 +57,85 @@ export default function NavBar() {
                 </Container>
               </Offcanvas.Title>
             </Offcanvas.Header>
-            <Offcanvas.Body className={styles.offcanvas_menu}>
-              <Nav className="justify-content-end flex-grow-1">
-                <NavLink
-                  className={({ isActive }) =>
-                    `me-5 ${isActive ? styles.active : styles.nav__link}`
-                  }
-                  to="/"
-                >
-                  {usuario.usuario.entrenador
-                    ? "CREAR ENTRENAMIENTO"
-                    : "PERFIL"}
-                </NavLink>
-                {usuario.usuario.entrenador && (
-                  <NavLink
-                    className={({ isActive }) =>
-                      `me-5 ${isActive ? styles.active : styles.nav__link}`
-                    }
-                    to="/alumnos"
-                  >
-                    ALUMNOS
-                  </NavLink>
+            <Offcanvas.Body
+              className={`${width < 991 && styles.offcanvas_menu}`}
+            >
+              <Nav className="justify-content-end flex-grow-1 align-items-center">
+                {usuario?.entrenador && (
+                  <>
+                    <NavLink
+                      className={({ isActive }) =>
+                        `me-5 ${isActive ? styles.active : styles.nav__link}`
+                      }
+                      to={"/"}
+                    >
+                      <p>CREAR ENTRENAMIENTO</p>
+                    </NavLink>
+                    <NavLink
+                      className={({ isActive }) =>
+                        `me-5 ${isActive ? styles.active : styles.nav__link}`
+                      }
+                      to="/alumnos"
+                    >
+                      <p>ALUMNOS</p>
+                    </NavLink>
+                  </>
                 )}
-                <NavLink className={styles.nav__link} onClick={() => logout()}>
-                  SALIR
-                </NavLink>
+                {width < 991 && (
+                  <>
+                    <NavLink
+                      to={"/perfil"}
+                      className={({ isActive }) =>
+                        `me-5 ${isActive ? styles.active : styles.nav__link}`
+                      }
+                    >
+                      <p>PERFIL</p>
+                    </NavLink>
+
+                    <NavLink
+                      className={`me-5 ${styles.nav__link}`}
+                      onClick={() => logout()}
+                    >
+                      <p>SALIR</p>
+                    </NavLink>
+                  </>
+                )}
               </Nav>
 
-              {/* <DropDown_ /> */}
+              {width > 991 && (
+                <NavDropdown
+                  className={`d-flex pe-5 ${styles.dropDownBG}`}
+                  title={
+                    <>
+                      {user?.picture && width > 690 && (
+                        <img
+                          className={` ${styles.imgUser}`}
+                          src={user.picture ? user.picture : ""}
+                          alt={user.given_name}
+                        />
+                      )}
+                    </>
+                  }
+                  id={`offcanvasNavbarDropdown-expand-${expand}`}
+                >
+                  <NavDropdown.Item href="#action1">
+                    <NavLink
+                      to={"/perfil"}
+                      className={styles.nav__link__dropdown}
+                    >
+                      <p>Perfil</p>
+                    </NavLink>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action2">
+                    <NavLink
+                      className={styles.nav__link__dropdown}
+                      onClick={() => logout()}
+                    >
+                      Salir
+                    </NavLink>
+                  </NavDropdown.Item>
+                </NavDropdown>
+              )}
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>

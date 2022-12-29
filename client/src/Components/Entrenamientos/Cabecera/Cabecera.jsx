@@ -24,7 +24,6 @@ export default function Cabecera() {
   const { alumnos } = useFetchAlumnos();
   const { user } = useAuth0();
   const { cabecera, setCabecera, handleChangueCabecera } = useTraining();
-  console.log(alumnos);
 
   const [disabled, setDisabled] = useState(false);
   const [editButton, setEditButton] = useState(false);
@@ -103,6 +102,20 @@ export default function Cabecera() {
             name="localidad"
             onChange={handleChangueCabecera}
             defaultValue={seleccionado.length ? seleccionado[0]?.localidad : ""}
+          />
+        </FieldInput>
+        <FieldInput
+          field={cabecera.provincia}
+          id="provincia"
+          text="Provincia:"
+          textWrong=""
+        >
+          <input
+            disabled={disabled}
+            type="text"
+            name="provincia"
+            onChange={handleChangueCabecera}
+            defaultValue={seleccionado.length ? seleccionado[0]?.provincia : ""}
           />
         </FieldInput>
         <FieldInput

@@ -14,6 +14,7 @@ import {
 import useFetchUser from "../../Hooks/useFetchUser";
 import { Button, Container } from "react-bootstrap";
 import ReactHtmlTableToExcel from "react-html-table-to-excel";
+import NavBar from "../NavBar/NavBar";
 
 // ReactHTMLTableToExcel.format = (s, c) => {
 //   if (c && c["table"]) {
