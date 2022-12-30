@@ -2,6 +2,7 @@ import axios from "axios";
 
 export function postEntrenamiento(payload) {
   let { entrenamiento, alumno } = payload;
+  console.log(payload);
 
   return async function () {
     try {
@@ -10,12 +11,17 @@ export function postEntrenamiento(payload) {
       });
       return res.data;
     } catch (error) {
-      console.error(error.message, "error en el POST del usuario: actions");
+      console.error(
+        error.message,
+        "error en el POST del entrenamiento: actions"
+      );
     }
   };
 }
 export function updateEntrenamiento(payload) {
   let { entrenamiento, alumno } = payload;
+
+  console.log(payload);
 
   return async function () {
     try {
@@ -24,7 +30,10 @@ export function updateEntrenamiento(payload) {
       });
       return res.data;
     } catch (error) {
-      console.error(error.message, "error en el PUT del usuario: actions");
+      console.error(
+        error.message,
+        "error en el PUT del entrenamiento: actions"
+      );
     }
   };
 }

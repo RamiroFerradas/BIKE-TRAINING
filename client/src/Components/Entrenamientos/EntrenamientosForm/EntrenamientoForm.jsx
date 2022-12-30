@@ -1,21 +1,41 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./EntrenamientoForm.module.css";
 import FieldInput from "../Field/FieldInput";
 import useTraining from "../../../Hooks/useTraining";
 import { bicicletas, days } from "../../Utils/Options";
+import useSelected from "../../../Hooks/useSelected";
 
 export default function EntrenamientoForm() {
   const { entrenamiento, day, handleChangueInput, cabecera, setDay } =
     useTraining();
   const handleDays = (e) => {
     setDay({ text: e.target.value, error: false });
-    document.getElementById("myForm").reset();
+    document.getElementById("myForm").value = "";
+    // console.log((reForm.value = ""));
+    // input1.current.value = "";
+    // input2.current.value = "";
+    // input3.current.value = "";
+    // input4.current.value = "";
+    // input5.current.value = "";
+    // input6.current.value = "";
+    // input7.current.value = "";
+    // input8.current.value = "";
   };
+  const { seleccionado } = useSelected();
+
+  const input1 = useRef();
+  const input2 = useRef();
+  const input3 = useRef();
+  const input4 = useRef();
+  const input5 = useRef();
+  const input6 = useRef();
+  const input7 = useRef();
+  const input8 = useRef();
 
   return (
     <div className={styles.body}>
       <div className={styles.divForm}></div>
-      <form action="">
+      <div className={styles.form}>
         {/* <FieldInput field="" id="" text="" textWrong=""> */}
         <div className={styles.selects}>
           <FieldInput field="" id="dia" text="Dia:" textWrong="">
@@ -29,6 +49,7 @@ export default function EntrenamientoForm() {
               })}
             </select>
           </FieldInput>
+
           <FieldInput
             className={styles.selectDay}
             field={entrenamiento[day.text]?.bicicleta}
@@ -37,10 +58,13 @@ export default function EntrenamientoForm() {
             textWrong=""
           >
             <select
+              ref={input1}
+              // id="myForm"
               name="bicicleta"
-              id="bici"
               onChange={handleChangueInput}
-              defaultChecked={entrenamiento}
+              defaultChecked={
+                seleccionado[0]?.entrenamientos[0]?.[day.text]?.bicicleta
+              }
               // value={entrenamiento[day.text]?.bicicleta.text}
             >
               <option>Seleccionar</option>
@@ -54,6 +78,7 @@ export default function EntrenamientoForm() {
             </select>
           </FieldInput>
         </div>
+
         {/* </FieldInput> */}
         {/* 
         <FieldInput
@@ -76,17 +101,21 @@ export default function EntrenamientoForm() {
 
         <FieldInput
           field={entrenamiento[day.text]?.calentamiento.text}
-          id="calentamiento"
           text="Calentamiento:"
           textWrong=""
         >
           <textarea
-            id="myForm"
+            ref={input2}
             rows={"5"}
             cols={"30"}
             name="calentamiento"
             onChange={handleChangueInput}
-            value={entrenamiento[day.text]?.calentamiento.text}
+            defaultValue={
+              seleccionado[0]?.entrenamientos[0]?.[day.text]?.calentamiento.text
+                ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.calentamiento
+                    ?.text
+                : ""
+            }
           />
         </FieldInput>
 
@@ -98,11 +127,14 @@ export default function EntrenamientoForm() {
         >
           <textarea
             rows={"5"}
+            ref={input3}
             cols={"30"}
-            value={entrenamiento[day.text]?.ejercicio_especifico.text}
+            defaultValue={
+              seleccionado[0]?.entrenamientos[0]?.[day.text]
+                ?.ejercicio_especifico?.text
+            }
             name="ejercicio_especifico"
             onChange={handleChangueInput}
-            id="myForm"
           />
         </FieldInput>
 
@@ -113,10 +145,15 @@ export default function EntrenamientoForm() {
           textWrong=""
         >
           <textarea
-            id="myForm"
+            ref={input4}
             rows={"5"}
             cols={"30"}
-            value={entrenamiento[day.text]?.descansos.text}
+            defaultValue={
+              seleccionado[0]?.entrenamientos[0]?.[day.text]?.descansos.text
+                ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.descansos
+                    ?.text
+                : ""
+            }
             name="descansos"
             onChange={handleChangueInput}
           />
@@ -129,10 +166,15 @@ export default function EntrenamientoForm() {
           textWrong=""
         >
           <textarea
-            id="myForm"
+            ref={input5}
             rows={"5"}
             cols={"30"}
-            value={entrenamiento[day.text]?.rodada_final.text}
+            defaultValue={
+              seleccionado[0]?.entrenamientos[0]?.[day.text]?.rodada_final.text
+                ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.rodada_final
+                    ?.text
+                : ""
+            }
             name="rodada_final"
             onChange={handleChangueInput}
           />
@@ -144,11 +186,17 @@ export default function EntrenamientoForm() {
           text="Horas estimadas:"
           textWrong=""
         >
-          <textarea
-            id="myForm"
-            rows={"5"}
-            cols={"30"}
-            value={entrenamiento[day.text]?.horas_estimadas.text}
+          <input
+            ref={input6}
+            type={"number"}
+            step=".1"
+            defaultValue={
+              seleccionado[0]?.entrenamientos[0]?.[day.text]?.horas_estimadas
+                .text
+                ? seleccionado[0]?.entrenamientos[0]?.[day.text]
+                    ?.horas_estimadas?.text
+                : ""
+            }
             name="horas_estimadas"
             onChange={handleChangueInput}
           />
@@ -161,10 +209,17 @@ export default function EntrenamientoForm() {
           textWrong=""
         >
           <textarea
+            ref={input7}
             id="myForm"
             rows={"5"}
             cols={"30"}
-            value={entrenamiento[day.text]?.tipo_entrenamiento.text}
+            defaultValue={
+              seleccionado[0]?.entrenamientos[0]?.[day.text]?.tipo_entrenamiento
+                .text
+                ? seleccionado[0]?.entrenamientos[0]?.[day.text]
+                    ?.tipo_entrenamiento?.text
+                : ""
+            }
             name="tipo_entrenamiento"
             onChange={handleChangueInput}
           />
@@ -178,16 +233,17 @@ export default function EntrenamientoForm() {
             textWrong=""
           >
             <textarea
+              ref={input8}
               id="myForm"
               rows={"5"}
               cols={"30"}
-              value={entrenamiento[day.text]?.gym.text}
+              defaultValue={seleccionado[0]?.entrenamientos[0]?.[day.text]?.gym}
               name="gym"
               onChange={handleChangueInput}
             />
           </FieldInput>
         )}
-      </form>
+      </div>
     </div>
   );
 }

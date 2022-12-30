@@ -45,7 +45,6 @@ const postAlumno = async (req, res) => {
       throw new Error("El usuario ya existe");
     } else {
       res.send(row);
-      console.log(row);
       return "Usuario creador correctamente!";
     }
   } catch (error) {
@@ -86,7 +85,6 @@ const updateAlumno = async (req, res) => {
     nombre,
     apellido,
   } = req.body;
-  console.log(req.body);
   try {
     if (gimnasio) {
       if (gimnasio.text === "false") {
@@ -95,7 +93,6 @@ const updateAlumno = async (req, res) => {
         gimnasio = true;
       }
     }
-    console.log(nombre, apellido);
     const usuario = await Usuario.update(
       {
         localidad: textTransformation(localidad.text),

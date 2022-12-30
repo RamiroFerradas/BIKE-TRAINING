@@ -220,27 +220,31 @@ export default function Cabecera() {
             <option value={"true"}>Si</option>
           </select>
         </FieldInput>
-        <div>
-          {seleccionado[0]?.alumno && (
-            <>
-              {disabled ? (
-                <Button variant="warning" onClick={handleEditAlumno}>
-                  EDITAR ALUMNO
-                </Button>
-              ) : (
-                <Button onClick={() => setDisabled(false)}>CANCELAR</Button>
-              )}
-            </>
-          )}
-          {!seleccionado.length ? (
-            <></>
-          ) : (
-            <Button variant="success" onClick={handleEdit}>
-              {!seleccionado[0]?.alumno ? `CARGAR ALUMNO` : `GUARDAR`}
-            </Button>
-          )}
-        </div>
       </form>
+      <Container fluid className="d-flex justify-content-center w-25 p-3">
+        {seleccionado[0]?.alumno && (
+          <>
+            {disabled ? (
+              <Button
+                className="me-3"
+                variant="warning"
+                onClick={handleEditAlumno}
+              >
+                EDITAR ALUMNO
+              </Button>
+            ) : (
+              <Button onClick={() => setDisabled(false)}>CANCELAR</Button>
+            )}
+          </>
+        )}
+        {!seleccionado.length ? (
+          <></>
+        ) : (
+          <Button variant="success" onClick={handleEdit}>
+            {!seleccionado[0]?.alumno ? `CARGAR ALUMNO` : `GUARDAR`}
+          </Button>
+        )}
+      </Container>
     </div>
   );
 }

@@ -17,7 +17,7 @@ const getAlumnos = async () => {
         },
       })
     ).map((ele) => ele.dataValues);
-
+    console.log(alumnosDb);
     if (alumnosDb.length) {
       console.log("Alumnos traidos de la db!");
       return alumnosDb;
@@ -41,7 +41,6 @@ const getAlumnosName = async (nombre, apellido) => {
   }
 };
 const getAlumnosEmail = async (email) => {
-  console.log(email);
   try {
     const alumno = await Usuario.findOne({
       where: {

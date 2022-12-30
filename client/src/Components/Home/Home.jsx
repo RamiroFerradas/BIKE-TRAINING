@@ -16,8 +16,6 @@ export default function Home() {
   const { isAuthenticated, isLoading, loginWithRedirect, user } = useAuth0();
   const [flag, setFlag] = useState(false);
 
-  console.log(user);
-
   const { usuario, loading } = useFetchUser();
   useEffect(() => {
     dispatch(postAlumno(user));
@@ -29,8 +27,17 @@ export default function Home() {
   return !isAuthenticated ? (
     <Login />
   ) : (
-    <div className={style.container}>
-      {usuario.entrenador ? <Entrenamientos /> : <Perfil />}
-    </div>
+    <>
+      {!flag ? (
+        <>
+          <NavBar />
+          <Loader />
+        </>
+      ) : (
+        <div className={style.container}>
+          {usuario.entrenador ? <Entrenamientos /> : <Perfil />}
+        </div>
+      )}
+    </>
   );
 }

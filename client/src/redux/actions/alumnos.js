@@ -51,3 +51,8 @@ export function updateALumno(payload) {
     }
   };
 }
+export function cleanUser() {
+  return {
+    type: "CLEAN_USER",
+  };
+}

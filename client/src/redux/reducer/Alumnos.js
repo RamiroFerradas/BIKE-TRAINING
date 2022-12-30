@@ -15,6 +15,11 @@ export default function alumnos(state = initialState, action) {
         ...state,
         usuario: action.payload,
       };
+    case "CLEAN_USER":
+      return {
+        ...state,
+        usuario: {},
+      };
     default:
       return state;
   }

@@ -7,15 +7,7 @@ export default function useSelected() {
   const alumnos = useSelector((state) => state.alumnos.allAlumnos);
   const [view, setView] = useState(false);
 
-  const [seleccionado, setSeleccionado] = useState({
-    localidad: "",
-    id: "",
-    horas_disponibles: 0,
-    alumno: false,
-    objetivo: "",
-    categoria: "",
-    gimnasio: "",
-  });
+  const [seleccionado, setSeleccionado] = useState([]);
 
   useEffect(() => {
     setView(true);

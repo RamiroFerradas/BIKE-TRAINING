@@ -14,6 +14,7 @@ export const TrainingProvider = ({ children }) => {
     alumno: true,
     localidad: { text: "", error: false },
     provincia: { text: "", error: false },
+    email: { text: "", error: false },
     // telefono: { text: 0, error: false },
     horas_disponibles: { text: 0, error: false },
     objetivo: { text: "", error: false },
