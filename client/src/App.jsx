@@ -14,7 +14,7 @@ import Entrenamientos from "./Components/Entrenamientos/Entrenamientos";
 import Error404 from "./Components/Error404/Error404";
 
 function App() {
-  const { isLoading } = useAuth0();
+  const { isLoading, user } = useAuth0();
   const { usuario, loading } = useFetchUser();
 
   if (isLoading) {

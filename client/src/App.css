@@ -12,3 +12,14 @@ body,
   width: 250px;
   background: blue;
 }
+
+.App {
+  color: black;
+  width: 100%;
+  background-image: url("../src/assets/1222966.jpg") !important;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  min-height: 100% !important;
+}

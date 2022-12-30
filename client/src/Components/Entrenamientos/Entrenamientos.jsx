@@ -55,6 +55,8 @@ export default function Entrenamientos() {
 
   return (
     <div className={styles.body}>
+      <NavBar />
+      <Cabecera />
       {view && seleccionado[0]?.alumno && (
         <>
           <p className="display-4 text-light  p-2  text-center">

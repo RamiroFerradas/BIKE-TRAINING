@@ -31,21 +31,27 @@ export default function Cabecera() {
   const options = alumnos?.map((e) => {
     return {
       value: e.id,
-      label: `${e.nombre} ${e.apellido}`,
+      label: e.nombre && e.apellido ? `${e.nombre} ${e.apellido}` : e.email,
     };
   });
   useEffect(() => {
     if (cabecera.id.text === "" || cabecera.id.text === null) {
       setCabecera({ ...cabecera, id: { error: true } });
     }
+    if (cabecera.nombre.text === "" || cabecera.nombre.text === null) {
+      setCabecera({ ...cabecera, nombre: { error: true } });
+    }
+    if (cabecera.apellido.text === "" || cabecera.apellido.text === null) {
+      setCabecera({ ...cabecera, apellido: { error: true } });
+    }
     !seleccionado[0]?.alumno ? setDisabled(false) : setDisabled(true);
-  }, [cabecera.id, seleccionado[0]]);
+  }, [cabecera.id, cabecera.nombre, cabecera.apellido, seleccionado[0]]);
 
   const handleEdit = (e) => {
     e.preventDefault();
     dispatch(updateALumno(cabecera));
     setTimeout(() => {
-      dispatch(fetchUsuario(user.email));
+      dispatch(fetchUsuario());
       dispatch(fetchAlumnos());
     }, 200);
   };
@@ -72,6 +78,40 @@ export default function Cabecera() {
         >
           <input type="text" name="planilla" onChange={handleChangueCabecera} />
         </FieldInput>
+        {!seleccionado.lengt ? (
+          false
+        ) : (
+          <>
+            {!seleccionado[0]?.nombre && (
+              <FieldInput
+                field={cabecera.nombre}
+                id="nombre"
+                text="Nombre:"
+                textWrong="Ingrese el nombre del alumno"
+              >
+                <input
+                  type="text"
+                  name="nombre"
+                  onChange={handleChangueCabecera}
+                />
+              </FieldInput>
+            )}
+            {!seleccionado[0]?.apellido && (
+              <FieldInput
+                field={cabecera.apellido}
+                id="apellido"
+                text="Apellido:"
+                textWrong="Ingrese el apellido del alumno"
+              >
+                <input
+                  type="text"
+                  name="apellido"
+                  onChange={handleChangueCabecera}
+                />
+              </FieldInput>
+            )}
+          </>
+        )}
         <FieldInput
           field={cabecera.id}
           id="id"

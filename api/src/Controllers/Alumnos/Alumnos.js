@@ -36,9 +36,8 @@ const postAlumno = async (req, res) => {
         nombre: textTransformation(given_name),
         apellido: textTransformation(family_name),
         entrenador:
-          email === "ramiferra97@gmail.com" || "gabriel_durando@hotmail.com"
-            ? true
-            : false,
+          email == "ramiferra97@gmail.com" ||
+          (email == "gabriel_durando@hotmail.com" && true),
       },
     });
 
@@ -46,6 +45,7 @@ const postAlumno = async (req, res) => {
       throw new Error("El usuario ya existe");
     } else {
       res.send(row);
+      console.log(row);
       return "Usuario creador correctamente!";
     }
   } catch (error) {
@@ -83,7 +83,8 @@ const updateAlumno = async (req, res) => {
     telefono,
     gimnasio,
     alumno,
-    entrenador,
+    nombre,
+    apellido,
   } = req.body;
   console.log(req.body);
   try {
@@ -94,18 +95,18 @@ const updateAlumno = async (req, res) => {
         gimnasio = true;
       }
     }
-
+    console.log(nombre, apellido);
     const usuario = await Usuario.update(
       {
         localidad: textTransformation(localidad.text),
         provincia: textTransformation(provincia.text),
-        horas_disponibles,
-        horas_disponibles,
+        // horas_disponibles,
         categoria: textTransformation(categoria.text),
         objetivo: textTransformation(objetivo.text),
         gimnasio,
         alumno,
-        entrenador,
+        nombre: textTransformation(nombre.text),
+        apellido: textTransformation(apellido.text),
       },
 
       {
@@ -114,7 +115,6 @@ const updateAlumno = async (req, res) => {
         },
       }
     );
-
     res.send(`Alumno actualizado con exito !!--->${usuario}`);
   } catch (error) {
     console.log(error.message, "Error en el update");

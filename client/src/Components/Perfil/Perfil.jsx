@@ -28,6 +28,7 @@ export default function Perfil() {
     loginWithRedirect()
   ) : (
     <>
+      <NavBar />
       <div className="container">
         <div className="main-body">
           <div className="row gutters-sm">
@@ -103,7 +104,7 @@ export default function Perfil() {
                       <h6 className="mb-0">Localidad</h6>
                     </div>
                     <div className="col-sm-9 text-secondary">
-                      {`${usuario?.localidad} + ${usuario?.provincia}`}
+                      {`${usuario?.localidad},  ${usuario?.provincia}`}
                     </div>
                   </div>
                   <div className="row">

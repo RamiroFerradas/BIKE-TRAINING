@@ -9,10 +9,12 @@ export const TrainingProvider = ({ children }) => {
   const [cabecera, setCabecera] = useState({
     id: { text: "", error: false },
     planilla: { text: "", error: false },
+    nombre: { text: "", error: false },
+    apellido: { text: "", error: false },
     alumno: true,
     localidad: { text: "", error: false },
     provincia: { text: "", error: false },
-    telefono: { text: 0, error: false },
+    // telefono: { text: 0, error: false },
     horas_disponibles: { text: 0, error: false },
     objetivo: { text: "", error: false },
     categoria: { text: "", error: false },
