@@ -80,9 +80,11 @@ export default function Cabecera() {
         setDisableButton(true);
       }
     }
+    if (seleccionado[0]?.alumno) setDisableButton(false);
   }, [
     seleccionado[0]?.nombre,
     seleccionado[0]?.apellido,
+    seleccionado[0]?.alumno,
     refNombre.current?.value,
     refApellido.current?.value,
   ]);
