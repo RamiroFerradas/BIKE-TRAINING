@@ -3,13 +3,13 @@
   background-color: red;
 }
 .container {
-  /* width: 100%;
-  background-image: url("../src/assets/1222966.jpg") !important;
+  width: 100%;
+  background-color: rgba(5, 5, 5, 0.527);
+  backdrop-filter: blur(1px);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  min-height: 100vh !important; */
 }
 
 .entrenamiento {

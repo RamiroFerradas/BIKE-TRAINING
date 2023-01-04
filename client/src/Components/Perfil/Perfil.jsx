@@ -17,7 +17,7 @@ export default function Perfil() {
     return Math.floor(Math.random() * max);
   }
 
-  if (loading) {
+  if (loading || !usuario.email) {
     return (
       <>
         <Loader />
@@ -54,9 +54,9 @@ export default function Perfil() {
                       <p className="text-muted font-size-sm">
                         {usuario?.categoria}
                       </p>
-                      <button className="btn btn-primary">Follow</button>
+                      <button className="btn btn-primary">Perfil</button>
                       <button className="btn btn-outline-primary">
-                        Message
+                        Entrenamiento
                       </button>
                     </div>
                   </div>
@@ -130,7 +130,7 @@ export default function Perfil() {
                 </div>
               </div>
 
-              <div className="row gutters-sm">
+              {/* <div className="row gutters-sm">
                 <div className="col-sm-6 mb-3">
                   <div className="card h-100">
                     <div className="card-body">
@@ -265,7 +265,7 @@ export default function Perfil() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

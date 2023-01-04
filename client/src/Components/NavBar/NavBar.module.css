@@ -17,6 +17,7 @@
   justify-content: center;
   margin: 0 auto;
 }
+
 .offcanvas_menu {
   background-color: #14364adf;
 }
@@ -77,6 +78,10 @@
   text-decoration: none;
   font-weight: normal;
   cursor: pointer;
+  color: #ff7b00;
+}
+.active:hover,
+.nav__link:hover {
   color: #ff7b00;
 }
 .nav__img {

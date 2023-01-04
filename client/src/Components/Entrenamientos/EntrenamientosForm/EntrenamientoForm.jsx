@@ -11,15 +11,6 @@ export default function EntrenamientoForm() {
   const handleDays = (e) => {
     setDay({ text: e.target.value, error: false });
     document.getElementById("myForm").value = "";
-    // console.log((reForm.value = ""));
-    // input1.current.value = "";
-    // input2.current.value = "";
-    // input3.current.value = "";
-    // input4.current.value = "";
-    // input5.current.value = "";
-    // input6.current.value = "";
-    // input7.current.value = "";
-    // input8.current.value = "";
   };
   const { seleccionado } = useSelected();
 

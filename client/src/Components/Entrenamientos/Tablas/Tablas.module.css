@@ -33,8 +33,8 @@ th {
   font-size: 2vmin !important;
 }
 .cabecera1 span {
-  color: black;
-  text-decoration: underline rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  text-decoration: underline rgb(255, 255, 255);
   /* text-align: center; */
 }
 

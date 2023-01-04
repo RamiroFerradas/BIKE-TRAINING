@@ -27,31 +27,31 @@ export default function Tablas({ preview }) {
 
               <div className={styles.cabecera1}>
                 <p>
-                  <span>Alumno: </span>
+                  <span>{`Alumno: `} </span>
                   {textTransformation(cabecera.alumno.text)}
                 </p>
                 <p>
-                  <span>Localidad: </span>
+                  <span>{`Localidad: `} </span>
                   {textTransformation(cabecera.localidad.text)}
                 </p>
               </div>
               <div className={styles.cabecera1}>
                 <p>
                   <span>
-                    Horas disponibles:
+                    {`Horas disponibles: `}
                     {cabecera.horas_disponibles.text}
                   </span>
                 </p>
                 <p>
-                  <span>Objetivo: </span>
+                  <span>{`Objetivo: `} </span>
                   {textTransformation(cabecera.objetivo.text)}
                 </p>
                 <p>
-                  <span>Categoria: </span>
+                  <span>{`Categoria: `} </span>
                   {textTransformation(cabecera.categoria.text)}
                 </p>
                 <p>
-                  <span>Gimnasio: </span>
+                  <span>{`Gimnasio: `}</span>
                   {textTransformation(cabecera.gimnasio.text)}
                 </p>
               </div>
