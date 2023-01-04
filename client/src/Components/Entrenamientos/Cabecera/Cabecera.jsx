@@ -60,58 +60,36 @@ export default function Cabecera() {
     setEditButton(true);
     setDisabled(!disabled);
   };
-
   const onChangueNombre = (e) => {
     setCabecera({
       ...cabecera,
       id: { text: e, error: false },
     });
   };
+
+  const refNombre = useRef();
+  const refApellido = useRef();
+  // console.log(refNombre.current.value);
+
+  const [disableButton, setDisableButton] = useState(true);
+  useEffect(() => {
+    if (!seleccionado[0]?.nombre || !seleccionado[0]?.apellido) {
+      if (refApellido.current?.value && refNombre.current?.value) {
+        setDisableButton(false);
+      } else {
+        setDisableButton(true);
+      }
+    }
+  }, [
+    seleccionado[0]?.nombre,
+    seleccionado[0]?.apellido,
+    refNombre.current?.value,
+    refApellido.current?.value,
+  ]);
+
   return (
     <div className={styles.body}>
       <form action="">
-        <FieldInput
-          field={cabecera.planilla}
-          id="planilla"
-          text="Nombre de planilla:"
-          textWrong="Ingrese un nombre para la planilla"
-        >
-          <input type="text" name="planilla" onChange={handleChangueCabecera} />
-        </FieldInput>
-        {!seleccionado.lengt ? (
-          false
-        ) : (
-          <>
-            {!seleccionado[0]?.nombre && (
-              <FieldInput
-                field={cabecera.nombre}
-                id="nombre"
-                text="Nombre:"
-                textWrong="Ingrese el nombre del alumno"
-              >
-                <input
-                  type="text"
-                  name="nombre"
-                  onChange={handleChangueCabecera}
-                />
-              </FieldInput>
-            )}
-            {!seleccionado[0]?.apellido && (
-              <FieldInput
-                field={cabecera.apellido}
-                id="apellido"
-                text="Apellido:"
-                textWrong="Ingrese el apellido del alumno"
-              >
-                <input
-                  type="text"
-                  name="apellido"
-                  onChange={handleChangueCabecera}
-                />
-              </FieldInput>
-            )}
-          </>
-        )}
         <FieldInput
           field={cabecera.id}
           id="id"
@@ -130,6 +108,43 @@ export default function Cabecera() {
             placeholder="Selecciona un alumno"
           />
         </FieldInput>
+
+        {cabecera.id.text && (
+          <>
+            {!seleccionado[0]?.nombre && (
+              <FieldInput
+                field={cabecera.nombre}
+                id="nombre"
+                text="Nombre:"
+                textWrong="Ingrese el nombre del alumno"
+              >
+                <input
+                  type="text"
+                  name="nombre"
+                  ref={refNombre}
+                  onChange={handleChangueCabecera}
+                />
+              </FieldInput>
+            )}
+
+            {!seleccionado[0]?.apellido && (
+              <FieldInput
+                field={cabecera.apellido}
+                id="apellido"
+                text="Apellido:"
+                textWrong="Ingrese el apellido del alumno"
+              >
+                <input
+                  ref={refApellido}
+                  type="text"
+                  name="apellido"
+                  onChange={handleChangueCabecera}
+                />
+              </FieldInput>
+            )}
+          </>
+        )}
+
         <FieldInput
           field={cabecera.localidad}
           id="localidad"
@@ -220,6 +235,14 @@ export default function Cabecera() {
             <option value={"true"}>Si</option>
           </select>
         </FieldInput>
+        <FieldInput
+          field={cabecera.planilla}
+          id="planilla"
+          text="Nombre de planilla:"
+          textWrong="Ingrese un nombre para la planilla"
+        >
+          <input type="text" name="planilla" onChange={handleChangueCabecera} />
+        </FieldInput>
       </form>
       <Container fluid className="d-flex justify-content-center w-25 p-3">
         {seleccionado[0]?.alumno && (
@@ -240,7 +263,11 @@ export default function Cabecera() {
         {!seleccionado.length ? (
           <></>
         ) : (
-          <Button variant="success" onClick={handleEdit}>
+          <Button
+            disabled={disableButton}
+            variant={!disableButton ? "success" : "danger"}
+            onClick={handleEdit}
+          >
             {!seleccionado[0]?.alumno ? `CARGAR ALUMNO` : `GUARDAR`}
           </Button>
         )}
