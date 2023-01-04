@@ -258,7 +258,7 @@ export default function Cabecera() {
                 EDITAR ALUMNO
               </Button>
             ) : (
-              <Button onClick={() => setDisabled(false)}>CANCELAR</Button>
+              <Button onClick={() => setDisabled(!disabled)}>CANCELAR</Button>
             )}
           </>
         )}
