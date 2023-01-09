@@ -11,7 +11,7 @@ export default function Alumnos() {
     <Loader />
   ) : (
     <div className={style.body}>
-      <NavBar />
+      {/* <NavBar /> */}
       <ul>
         {alumnos?.map((e) => {
           return (

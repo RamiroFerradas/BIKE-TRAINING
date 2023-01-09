@@ -1,31 +1,86 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import styles from "./EntrenamientoForm.module.css";
 import FieldInput from "../Field/FieldInput";
 import useTraining from "../../../Hooks/useTraining";
 import { bicicletas, days } from "../../Utils/Options";
 import useSelected from "../../../Hooks/useSelected";
 
-export default function EntrenamientoForm() {
+export default function EntrenamientoForm({
+  input1,
+  input2,
+  input3,
+  input4,
+  input5,
+  input6,
+  input7,
+  input8,
+}) {
   const { entrenamiento, day, handleChangueInput, cabecera, setDay } =
     useTraining();
-  const handleDays = (e) => {
-    setDay({ text: e.target.value, error: false });
-    document.getElementById("myForm").value = "";
-  };
   const { seleccionado } = useSelected();
 
-  const input1 = useRef();
-  const input2 = useRef();
-  const input3 = useRef();
-  const input4 = useRef();
-  const input5 = useRef();
-  const input6 = useRef();
-  const input7 = useRef();
-  const input8 = useRef();
+  useEffect(() => {
+    input2.current.value = entrenamiento[day?.text]?.calentamiento.text
+      ? entrenamiento[day?.text]?.calentamiento.text
+      : seleccionado[0]?.entrenamientos[0]?.[day.text]?.calentamiento?.text
+      ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.calentamiento?.text
+      : "";
+    input2.current.value = entrenamiento[day?.text]?.calentamiento.text
+      ? entrenamiento[day?.text]?.calentamiento.text
+      : seleccionado[0]?.entrenamientos[0]?.[day.text]?.calentamiento?.text
+      ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.calentamiento?.text
+      : "";
+    input3.current.value = entrenamiento[day?.text]?.ejercicio_especifico.text
+      ? entrenamiento[day?.text]?.ejercicio_especifico.text
+      : seleccionado[0]?.entrenamientos[0]?.[day.text]?.ejercicio_especifico
+          ?.text
+      ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.ejercicio_especifico
+          ?.text
+      : "";
+    input4.current.value = entrenamiento[day?.text]?.descansos.text
+      ? entrenamiento[day?.text]?.descansos.text
+      : seleccionado[0]?.entrenamientos[0]?.[day.text]?.descansos?.text
+      ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.descansos?.text
+      : "";
+    input5.current.value = entrenamiento[day?.text]?.rodada_final.text
+      ? entrenamiento[day?.text]?.rodada_final.text
+      : seleccionado[0]?.entrenamientos[0]?.[day.text]?.rodada_final?.text
+      ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.rodada_final?.text
+      : "";
+    input6.current.value = entrenamiento[day?.text]?.horas_estimadas.text
+      ? entrenamiento[day?.text]?.horas_estimadas.text
+      : seleccionado[0]?.entrenamientos[0]?.[day.text]?.horas_estimadas?.text
+      ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.horas_estimadas?.text
+      : "";
+    input7.current.value = entrenamiento[day?.text]?.tipo_entrenamiento.text
+      ? entrenamiento[day?.text]?.tipo_entrenamiento.text
+      : seleccionado[0]?.entrenamientos[0]?.[day.text]?.tipo_entrenamiento?.text
+      ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.tipo_entrenamiento?.text
+      : "";
+    // input8.current.value = entrenamiento[day?.text]?.gym.text
+    //   ? entrenamiento[day?.text]?.gym.text
+    //   : seleccionado[0]?.entrenamientos[0]?.[day.text]?.gym?.text
+    //   ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.gym?.text
+    //   : "";
+  }, [
+    input1.current,
+    input2.current,
+    input3.current,
+    input4.current,
+    input5.current,
+    input6.current,
+    input7.current,
+    input8.current,
+    day.text,
+    seleccionado[0]?.entrenamientos[0],
+  ]);
+
+  const handleDays = (e) => {
+    setDay({ text: e.target.value, error: false });
+  };
 
   return (
     <div className={styles.body}>
-      <div className={styles.divForm}></div>
       <div className={styles.form}>
         {/* <FieldInput field="" id="" text="" textWrong=""> */}
         <div className={styles.selects}>
@@ -50,15 +105,13 @@ export default function EntrenamientoForm() {
           >
             <select
               ref={input1}
-              // id="myForm"
+              id="myForm"
               name="bicicleta"
               onChange={handleChangueInput}
-              defaultChecked={
-                seleccionado[0]?.entrenamientos[0]?.[day.text]?.bicicleta
-              }
+
               // value={entrenamiento[day.text]?.bicicleta.text}
             >
-              <option>Seleccionar</option>
+              <option value={""}>Seleccionar</option>;
               {bicicletas.map((bici) => {
                 return (
                   <option key={bici.id} id={bici.id} value={bici.label}>
@@ -70,26 +123,6 @@ export default function EntrenamientoForm() {
           </FieldInput>
         </div>
 
-        {/* </FieldInput> */}
-        {/* 
-        <FieldInput
-          className={styles.selectDay}
-          field={entrenamiento[day.text]?.bicicleta}
-          id="bicicleta"
-          text="Bicicleta:"
-          textWrong=""
-        >
-          <select name="bicicleta" id="bici" onChange={handleChangueInput}>
-            {bicicletas.map((bici) => {
-              return (
-                <option key={bici.id} id={bici.id} value={bici.value}>
-                  {bici.value}
-                </option>
-              );
-            })}
-          </select>
-        </FieldInput> */}
-
         <FieldInput
           field={entrenamiento[day.text]?.calentamiento.text}
           text="Calentamiento:"
@@ -97,16 +130,11 @@ export default function EntrenamientoForm() {
         >
           <textarea
             ref={input2}
+            id="myForm"
             rows={"5"}
             cols={"30"}
             name="calentamiento"
             onChange={handleChangueInput}
-            defaultValue={
-              seleccionado[0]?.entrenamientos[0]?.[day.text]?.calentamiento.text
-                ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.calentamiento
-                    ?.text
-                : ""
-            }
           />
         </FieldInput>
 
@@ -120,10 +148,6 @@ export default function EntrenamientoForm() {
             rows={"5"}
             ref={input3}
             cols={"30"}
-            defaultValue={
-              seleccionado[0]?.entrenamientos[0]?.[day.text]
-                ?.ejercicio_especifico?.text
-            }
             name="ejercicio_especifico"
             onChange={handleChangueInput}
           />
@@ -139,12 +163,6 @@ export default function EntrenamientoForm() {
             ref={input4}
             rows={"5"}
             cols={"30"}
-            defaultValue={
-              seleccionado[0]?.entrenamientos[0]?.[day.text]?.descansos.text
-                ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.descansos
-                    ?.text
-                : ""
-            }
             name="descansos"
             onChange={handleChangueInput}
           />
@@ -160,12 +178,6 @@ export default function EntrenamientoForm() {
             ref={input5}
             rows={"5"}
             cols={"30"}
-            defaultValue={
-              seleccionado[0]?.entrenamientos[0]?.[day.text]?.rodada_final.text
-                ? seleccionado[0]?.entrenamientos[0]?.[day.text]?.rodada_final
-                    ?.text
-                : ""
-            }
             name="rodada_final"
             onChange={handleChangueInput}
           />
@@ -181,13 +193,6 @@ export default function EntrenamientoForm() {
             ref={input6}
             type={"number"}
             step=".1"
-            defaultValue={
-              seleccionado[0]?.entrenamientos[0]?.[day.text]?.horas_estimadas
-                .text
-                ? seleccionado[0]?.entrenamientos[0]?.[day.text]
-                    ?.horas_estimadas?.text
-                : ""
-            }
             name="horas_estimadas"
             onChange={handleChangueInput}
           />
@@ -204,19 +209,12 @@ export default function EntrenamientoForm() {
             id="myForm"
             rows={"5"}
             cols={"30"}
-            defaultValue={
-              seleccionado[0]?.entrenamientos[0]?.[day.text]?.tipo_entrenamiento
-                .text
-                ? seleccionado[0]?.entrenamientos[0]?.[day.text]
-                    ?.tipo_entrenamiento?.text
-                : ""
-            }
             name="tipo_entrenamiento"
             onChange={handleChangueInput}
           />
         </FieldInput>
 
-        {cabecera.gimnasio.text === "Si" && (
+        {seleccionado[0]?.gimnasio && (
           <FieldInput
             field={entrenamiento[day.text]?.gym}
             id="gym"
@@ -228,7 +226,6 @@ export default function EntrenamientoForm() {
               id="myForm"
               rows={"5"}
               cols={"30"}
-              defaultValue={seleccionado[0]?.entrenamientos[0]?.[day.text]?.gym}
               name="gym"
               onChange={handleChangueInput}
             />

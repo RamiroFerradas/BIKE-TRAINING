@@ -17,7 +17,6 @@ const getAlumnos = async () => {
         },
       })
     ).map((ele) => ele.dataValues);
-    console.log(alumnosDb);
     if (alumnosDb.length) {
       console.log("Alumnos traidos de la db!");
       return alumnosDb;

@@ -94,6 +94,7 @@ export const TrainingProvider = ({ children }) => {
       gym: { text: "", error: false },
     },
   });
+
   const handleChangueInput = (e) => {
     setEntrenamiento((state) => {
       return {

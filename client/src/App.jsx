@@ -12,9 +12,10 @@ import Loader from "./Components/Loader/Loader";
 import Perfil from "./Components/Perfil/Perfil";
 import Entrenamientos from "./Components/Entrenamientos/Entrenamientos";
 import Error404 from "./Components/Error404/Error404";
+import EntrenamientoUsuario from "./Components/Entrenamientos/EntrenamientoUsuario/EntrenamientoUsuario";
 
 function App() {
-  const { isLoading, user } = useAuth0();
+  const { isLoading, user, isAuthenticated } = useAuth0();
   const { usuario, loading } = useFetchUser();
 
   if (isLoading) {
@@ -22,11 +23,13 @@ function App() {
   }
   return (
     <div className="App">
+      {isAuthenticated && <NavBar />}
       <Routes>
         <Route path="/" element={<Home />}></Route>
         {usuario.entrenador && (
           <Route path="/entrenador" element={<Entrenamientos />}></Route>
         )}
+        <Route path="/entrenamiento" element={<EntrenamientoUsuario />}></Route>
         <Route path="/perfil" element={<Perfil />}></Route>
         <Route path="/alumnos" element={<Alumnos />}></Route>
         <Route path="*" element={<Error404 />}></Route>

@@ -17,18 +17,8 @@ export default function Perfil() {
     return Math.floor(Math.random() * max);
   }
 
-  if (loading || !usuario.email) {
-    return (
-      <>
-        <Loader />
-      </>
-    );
-  }
-  return !isAuthenticated ? (
-    loginWithRedirect()
-  ) : (
+  return (
     <>
-      <NavBar />
       <div className="container">
         <div className="main-body">
           <div className="row gutters-sm">

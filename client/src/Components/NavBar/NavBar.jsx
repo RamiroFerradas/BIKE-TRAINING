@@ -91,6 +91,14 @@ export default function NavBar() {
                     >
                       <p>PERFIL</p>
                     </NavLink>
+                    <NavLink
+                      to={"/entrenamiento"}
+                      className={({ isActive }) =>
+                        `me-5 ${isActive ? styles.active : styles.nav__link}`
+                      }
+                    >
+                      <p>ENTRENAMIENTO</p>
+                    </NavLink>
 
                     <NavLink
                       className={`me-5 ${styles.nav__link}`}
@@ -124,6 +132,14 @@ export default function NavBar() {
                       className={styles.nav__link__dropdown}
                     >
                       <p>Perfil</p>
+                    </NavLink>
+                  </NavDropdown.Item>
+                  <NavDropdown.Item href="#action1">
+                    <NavLink
+                      to={"/entrenamiento"}
+                      className={styles.nav__link__dropdown}
+                    >
+                      <p>Entrenamiento</p>
                     </NavLink>
                   </NavDropdown.Item>
                   <NavDropdown.Item href="#action2">

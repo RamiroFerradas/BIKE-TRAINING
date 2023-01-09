@@ -16,24 +16,44 @@ import { useAuth0 } from "@auth0/auth0-react";
 import useFetchUser from "../../../Hooks/useFetchUser";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { categorias, provincias } from "../../Utils/Options";
 
-export default function Cabecera() {
+export default function Cabecera({
+  selectRef,
+  input1,
+  input2,
+  input3,
+  input4,
+  input5,
+  input6,
+  input7,
+  input8,
+}) {
   const animatedComponents = makeAnimated();
   const dispatch = useDispatch();
   const { seleccionado } = useSelected();
   const { alumnos } = useFetchAlumnos();
-  const { user } = useAuth0();
   const { cabecera, setCabecera, handleChangueCabecera } = useTraining();
+
+  const refNombre = useRef();
+  const refApellido = useRef();
 
   const [disabled, setDisabled] = useState(false);
   const [editButton, setEditButton] = useState(false);
 
-  const options = alumnos?.map((e) => {
+  const optionsAlumnos = alumnos?.map((e) => {
     return {
       value: e.id,
       label: e.nombre && e.apellido ? `${e.nombre} ${e.apellido}` : e.email,
     };
   });
+  const optionsProvincias = provincias?.map((e) => {
+    return {
+      value: e.id,
+      label: e.label,
+    };
+  });
+
   useEffect(() => {
     if (cabecera.id.text === "" || cabecera.id.text === null) {
       setCabecera({ ...cabecera, id: { error: true } });
@@ -66,10 +86,12 @@ export default function Cabecera() {
       id: { text: e, error: false },
     });
   };
-
-  const refNombre = useRef();
-  const refApellido = useRef();
-  // console.log(refNombre.current.value);
+  const onChangueProv = (e) => {
+    setCabecera({
+      ...cabecera,
+      provincia: { text: e, error: false },
+    });
+  };
 
   const [disableButton, setDisableButton] = useState(true);
   useEffect(() => {
@@ -99,11 +121,12 @@ export default function Cabecera() {
           textWrong="Selecciona un alumno"
         >
           <Select
+            ref={selectRef}
             disabled={disabled}
             closeMenuOnSelect={true}
             components={animatedComponents}
             // value={selectedOption}
-            options={options}
+            options={optionsAlumnos}
             isClearable
             onChange={onChangueNombre}
             isSearchable
@@ -167,6 +190,26 @@ export default function Cabecera() {
           text="Provincia:"
           textWrong=""
         >
+          {/* <Select
+            disabled={disabled}
+            closeMenuOnSelect={true}
+            components={animatedComponents}
+            // value={selectedOption}
+            options={optionsProvincias}
+            isClearable
+            onChange={onChangueProv}
+            isSearchable
+            placeholder="Selecciona una provincia"
+            name="provincia"
+            value={[
+              {
+                label: seleccionado.length
+                  ? seleccionado[0]?.provincia
+                  : "Seleccionar",
+                value: seleccionado[0]?.provincia,
+              },
+            ]}
+          /> */}
           <input
             disabled={disabled}
             type="text"
@@ -211,13 +254,18 @@ export default function Cabecera() {
           text="Categoria:"
           textWrong=""
         >
-          <input
+          <select
             disabled={disabled}
-            type="text"
             name="categoria"
-            onChange={handleChangueCabecera}
             defaultValue={seleccionado.length ? seleccionado[0]?.categoria : ""}
-          />
+            onChange={(e) => {
+              setCabecera({ ...cabecera, categoria: e.target.value });
+            }}
+          >
+            {categorias?.map((e) => {
+              return <option key={e.id}>{e.label}</option>;
+            })}
+          </select>
         </FieldInput>
         <FieldInput
           field={cabecera.gimnasio}
