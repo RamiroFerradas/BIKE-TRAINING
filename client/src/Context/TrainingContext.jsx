@@ -119,6 +119,10 @@ export const TrainingProvider = ({ children }) => {
     });
   };
 
+  const handleDays = (e) => {
+    setDay({ text: e.target.value, error: false });
+  };
+
   const data = {
     entrenamiento,
     cabecera,
@@ -127,6 +131,7 @@ export const TrainingProvider = ({ children }) => {
     day,
     setDay,
     handleChangueCabecera,
+    handleDays,
   };
 
   return (

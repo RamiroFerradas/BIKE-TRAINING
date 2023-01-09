@@ -15,8 +15,7 @@ export default function EntrenamientoForm({
   input7,
   input8,
 }) {
-  const { entrenamiento, day, handleChangueInput, cabecera, setDay } =
-    useTraining();
+  const { entrenamiento, day, handleChangueInput, handleDays } = useTraining();
   const { seleccionado } = useSelected();
 
   useEffect(() => {
@@ -74,10 +73,6 @@ export default function EntrenamientoForm({
     day.text,
     seleccionado[0]?.entrenamientos[0],
   ]);
-
-  const handleDays = (e) => {
-    setDay({ text: e.target.value, error: false });
-  };
 
   return (
     <div className={styles.body}>
