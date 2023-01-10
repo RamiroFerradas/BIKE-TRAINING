@@ -21,12 +21,13 @@ export default function EntrenamientoUsuario() {
 
   return (
     <div>
-      <p className="display-6 text-dark  p-2  text-center">
-        <strong>MI ENTRENAMIENTO</strong>
-      </p>
-      <Container className="bg-light h-100">
+      <Container className="bg-light h-100 mt-3">
+        <p className="display-6 text-dark  p-2  text-center">
+          <strong>MI ENTRENAMIENTO</strong>
+        </p>
         <Form.Select
           size="lg"
+          className="border border-primary"
           aria-label="Default select example"
           onChange={handleDays}
         >

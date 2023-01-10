@@ -18,6 +18,7 @@ export default function NavBar() {
   const { user, logout } = useAuth0();
   const { width } = useScreenSize();
   const { usuario } = useFetchUser();
+  const { pathname } = useLocation();
   const expand = "lg";
   let img = (
     <img
@@ -81,12 +82,16 @@ export default function NavBar() {
                     </NavLink>
                   </>
                 )}
-                {width < 991 && (
+                {!usuario?.entrenador && (
                   <>
                     <NavLink
                       to={"/perfil"}
                       className={({ isActive }) =>
-                        `me-5 ${isActive ? styles.active : styles.nav__link}`
+                        `me-5 ${
+                          isActive || pathname === "/"
+                            ? styles.active
+                            : styles.nav__link
+                        }`
                       }
                     >
                       <p>PERFIL</p>
@@ -99,14 +104,15 @@ export default function NavBar() {
                     >
                       <p>ENTRENAMIENTO</p>
                     </NavLink>
-
-                    <NavLink
-                      className={`me-5 ${styles.nav__link}`}
-                      onClick={() => logout()}
-                    >
-                      <p>SALIR</p>
-                    </NavLink>
                   </>
+                )}
+                {width < 991 && (
+                  <NavLink
+                    className={`me-5 ${styles.nav__link}`}
+                    onClick={() => logout()}
+                  >
+                    Salir
+                  </NavLink>
                 )}
               </Nav>
 
@@ -126,22 +132,26 @@ export default function NavBar() {
                   }
                   id={`offcanvasNavbarDropdown-expand-${expand}`}
                 >
-                  <NavDropdown.Item href="#action1">
-                    <NavLink
-                      to={"/perfil"}
-                      className={styles.nav__link__dropdown}
-                    >
-                      <p>Perfil</p>
-                    </NavLink>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action1">
-                    <NavLink
-                      to={"/entrenamiento"}
-                      className={styles.nav__link__dropdown}
-                    >
-                      <p>Entrenamiento</p>
-                    </NavLink>
-                  </NavDropdown.Item>
+                  {width < 991 && (
+                    <>
+                      <NavDropdown.Item href="#action1">
+                        <NavLink
+                          to={"/perfil"}
+                          className={styles.nav__link__dropdown}
+                        >
+                          <p>Perfil</p>
+                        </NavLink>
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="#action1">
+                        <NavLink
+                          to={"/entrenamiento"}
+                          className={styles.nav__link__dropdown}
+                        >
+                          <p>Entrenamiento</p>
+                        </NavLink>
+                      </NavDropdown.Item>
+                    </>
+                  )}
                   <NavDropdown.Item href="#action2">
                     <NavLink
                       className={styles.nav__link__dropdown}

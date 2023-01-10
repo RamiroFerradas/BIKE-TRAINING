@@ -17,9 +17,13 @@ export default function Perfil() {
     return Math.floor(Math.random() * max);
   }
 
-  return (
+  return loading || !usuario.email ? (
     <>
-      <div className="container">
+      <Loader />
+    </>
+  ) : (
+    <>
+      <div className="container pt-5 pb-5">
         <div className="main-body">
           <div className="row gutters-sm">
             <div className="col-md-4 mb-3">
@@ -39,15 +43,15 @@ export default function Perfil() {
                       width="150"
                     />
                     <div className="mt-3">
-                      <h4>{user.name}</h4>
+                      <p className="h5">{user.name}</p>
                       <p className="text-secondary mb-1"></p>
                       <p className="text-muted font-size-sm">
                         {usuario?.categoria}
                       </p>
-                      <button className="btn btn-primary">Perfil</button>
+                      {/* <button className="btn btn-primary">Perfil</button>
                       <button className="btn btn-outline-primary">
                         Entrenamiento
-                      </button>
+                      </button> */}
                     </div>
                   </div>
                 </div>
