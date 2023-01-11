@@ -38,7 +38,7 @@ export default function Entrenamientos() {
 
   const handleEntrenamiento = () => {
     try {
-      if (!seleccionado[0].entrenamientos[0].id) {
+      if (!seleccionado[0].entrenamientos[0]?.id) {
         dispatch(
           postEntrenamiento({ entrenamiento, alumno: cabecera.id.text.value })
         );
