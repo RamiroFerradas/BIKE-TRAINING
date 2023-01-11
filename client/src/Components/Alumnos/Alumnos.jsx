@@ -11,13 +11,19 @@ export default function Alumnos() {
   return loading ? (
     <Loader />
   ) : (
-    <div className="p-5">
+    <Container fluid className="pt-5 pb-5">
       <ListGroup>
         <Row className=" d-flex justify-content-center align-items-center">
           {alumnos?.map((e, index) => {
             return (
               <>
-                <Col key={index} xs={6} md={3} lg={2}>
+                <Col
+                  onClick={() => console.log("CLICK")}
+                  key={index}
+                  xs={6}
+                  md={3}
+                  lg={2}
+                >
                   <Card className="p-1" style={{ width: "12rem" }}>
                     <Card.Img
                       variant="top"
@@ -39,6 +45,6 @@ export default function Alumnos() {
           })}
         </Row>
       </ListGroup>
-    </div>
+    </Container>
   );
 }

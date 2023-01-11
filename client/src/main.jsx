@@ -17,7 +17,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     domain="dev-usdtec3d.us.auth0.com"
     clientId="kbFsGoN5hpQFQtXhQ33fFmoDRAroU4tt"
     redirectUri={window.location.origin}
-    redirect_uri={window.location.origin}
     useRefreshTokens
     cacheLocation="localstorage"
   >
