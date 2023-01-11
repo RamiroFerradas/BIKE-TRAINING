@@ -1,6 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import useFetchUser from "../../Hooks/useFetchUser";
 import { fetchUsuario, postAlumno } from "../../redux/actions/alumnos";
 import Cabecera from "../Entrenamientos/Cabecera/Cabecera";
@@ -17,10 +18,12 @@ export default function Home() {
   const [flag, setFlag] = useState(false);
 
   const { usuario, loading } = useFetchUser();
+
   useEffect(() => {
-    dispatch(postAlumno(user));
+    isAuthenticated && dispatch(postAlumno(user));
     setTimeout(() => {
       setFlag(true);
+      isAuthenticated && dispatch(fetchUsuario(user.email));
     }, 500);
   }, [user]);
 

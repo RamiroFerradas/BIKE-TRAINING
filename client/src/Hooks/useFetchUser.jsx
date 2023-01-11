@@ -14,7 +14,7 @@ export default function useFetchUser() {
   useEffect(() => {
     setLoading(true);
     if (!usuario.email) {
-      dispatch(fetchUsuario(user?.email));
+      isAuthenticated && dispatch(fetchUsuario(user?.email));
     } else {
       setLoading(false);
     }

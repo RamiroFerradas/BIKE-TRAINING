@@ -24,7 +24,7 @@ const getAllAlumnos = async (req, res) => {
 };
 
 const postAlumno = async (req, res) => {
-  let { given_name, family_name, email } = req.body;
+  let { given_name, family_name, email, picture } = req.body;
   try {
     family_name = textTransformation(family_name);
     email = email?.toLowerCase();
@@ -35,6 +35,7 @@ const postAlumno = async (req, res) => {
       defaults: {
         nombre: textTransformation(given_name),
         apellido: textTransformation(family_name),
+        foto: picture,
         entrenador:
           email == "ramiferra97@gmail.com" ||
           (email == "gabriel_durando@hotmail.com" && true),

@@ -23,7 +23,7 @@ export default function Perfil() {
     </>
   ) : (
     <>
-      <div className="container pt-5 pb-5">
+      <div className="container pt-5 pb-5 mt-3">
         <div className="main-body">
           <div className="row gutters-sm">
             <div className="col-md-4 mb-3">
