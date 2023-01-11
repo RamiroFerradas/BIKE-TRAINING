@@ -64,6 +64,7 @@ export default function Cabecera({
     if (cabecera.apellido.text === "" || cabecera.apellido.text === null) {
       setCabecera({ ...cabecera, apellido: { error: true } });
     }
+
     !seleccionado[0]?.alumno ? setDisabled(false) : setDisabled(true);
   }, [cabecera.id, cabecera.nombre, cabecera.apellido, seleccionado[0]]);
 
@@ -94,22 +95,18 @@ export default function Cabecera({
   };
 
   const [disableButton, setDisableButton] = useState(true);
+
   useEffect(() => {
-    if (!seleccionado[0]?.nombre || !seleccionado[0]?.apellido) {
-      if (refApellido.current?.value && refNombre.current?.value) {
+    if (cabecera?.id?.text?.label?.includes("@" || ".com")) {
+      if (refNombre.current?.value && refApellido.current?.value) {
         setDisableButton(false);
       } else {
         setDisableButton(true);
       }
+    } else {
+      setDisableButton(false);
     }
-    if (seleccionado[0]?.alumno) setDisableButton(false);
-  }, [
-    seleccionado[0]?.nombre,
-    seleccionado[0]?.apellido,
-    seleccionado[0]?.alumno,
-    refNombre.current?.value,
-    refApellido.current?.value,
-  ]);
+  }, [cabecera.id, refNombre.current?.value, refApellido.current?.value]);
 
   return (
     <div className={styles.body}>
