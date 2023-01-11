@@ -35,7 +35,6 @@ export default function Entrenamientos() {
   const { seleccionado, view } = useSelected();
 
   const [preview, setPreview] = useState(false);
-
   const handleEntrenamiento = () => {
     try {
       if (!seleccionado[0].entrenamientos[0]?.id) {

@@ -21,7 +21,7 @@ export function postEntrenamiento(payload) {
 export function updateEntrenamiento(payload) {
   let { entrenamiento, alumno } = payload;
 
-  console.log(payload);
+  console.log(payload, "update");
 
   return async function () {
     try {
