@@ -51,6 +51,13 @@ export function updateALumno(payload) {
     }
   };
 }
+export function selectUser(payload) {
+  console.log(payload);
+  return {
+    type: "SELECT_USER",
+    payload,
+  };
+}
 export function cleanUser() {
   return {
     type: "CLEAN_USER",

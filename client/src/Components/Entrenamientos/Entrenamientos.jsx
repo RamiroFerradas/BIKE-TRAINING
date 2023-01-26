@@ -5,7 +5,7 @@ import Tablas from "./Tablas/Tablas";
 import styles from "./Entrenamientos.module.css";
 import useSelected from "../../Hooks/useSelected";
 import useTraining from "../../Hooks/useTraining";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { updateALumno } from "../../redux/actions/alumnos";
 import {
   postEntrenamiento,
@@ -17,6 +17,9 @@ import ReactHtmlTableToExcel from "react-html-table-to-excel";
 import NavBar from "../NavBar/NavBar";
 import { days } from "../Utils/Options";
 import Swal from "sweetalert2";
+import VentanaModal from "../VentanaModal/VentanaModal";
+import { useLocation } from "react-router-dom";
+import useLocalStorage from "../../Hooks/useLocalStorage";
 
 export default function Entrenamientos() {
   const dispatch = useDispatch();
@@ -32,7 +35,15 @@ export default function Entrenamientos() {
   const input8 = useRef();
 
   const { entrenamiento, cabecera } = useTraining();
-  const { seleccionado, view } = useSelected();
+  const { seleccionado, view, setSeleccionado } = useSelected();
+  const { pathname, state } = useLocation();
+  const [selected, setSelected] = useLocalStorage("userSelected", []);
+
+  useEffect(() => {
+    if (state?.prevPathname === "/alumnos") {
+      setSeleccionado(selected);
+    }
+  }, [seleccionado, selected]);
 
   const [preview, setPreview] = useState(false);
   const handleEntrenamiento = () => {

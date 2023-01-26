@@ -1,6 +1,7 @@
 const initialState = {
   allAlumnos: [],
   usuario: {},
+  seleccionado: [],
 };
 
 export default function alumnos(state = initialState, action) {
@@ -19,6 +20,11 @@ export default function alumnos(state = initialState, action) {
       return {
         ...state,
         usuario: {},
+      };
+    case "SELECT_USER":
+      return {
+        ...state,
+        Seleccionado: action.payload,
       };
     default:
       return state;

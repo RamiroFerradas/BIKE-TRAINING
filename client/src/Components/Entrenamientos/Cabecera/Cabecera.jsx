@@ -17,6 +17,8 @@ import useFetchUser from "../../../Hooks/useFetchUser";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { categorias, provincias } from "../../Utils/Options";
+import { useLocation } from "react-router-dom";
+import useLocalStorage from "../../../Hooks/useLocalStorage";
 
 export default function Cabecera({
   selectRef,
@@ -31,9 +33,11 @@ export default function Cabecera({
 }) {
   const animatedComponents = makeAnimated();
   const dispatch = useDispatch();
-  const { seleccionado } = useSelected();
+  const { seleccionado, view, setSeleccionado } = useSelected();
   const { alumnos } = useFetchAlumnos();
   const { cabecera, setCabecera, handleChangueCabecera } = useTraining();
+  const [selected, setSelected] = useLocalStorage("userSelected", []);
+  const { pathname, state } = useLocation();
 
   const refNombre = useRef();
   const refApellido = useRef();
@@ -54,6 +58,11 @@ export default function Cabecera({
     };
   });
 
+  useEffect(() => {
+    setSeleccionado(seleccionado);
+    if (state?.prevPathname === "/alumnos") {
+    }
+  }, []);
   useEffect(() => {
     if (cabecera.id.text === "" || cabecera.id.text === null) {
       setCabecera({ ...cabecera, id: { error: true } });

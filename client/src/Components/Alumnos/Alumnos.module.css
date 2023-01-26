@@ -1,0 +1,6 @@
+.card {
+  width: 14rem;
+  height: 25rem;
+  background-color: rgba(226, 226, 226, 0.898);
+  backdrop-filter: blur(2px);
+}

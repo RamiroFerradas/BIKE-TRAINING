@@ -12,7 +12,7 @@ export default function useSelected() {
   useEffect(() => {
     setView(true);
     setSeleccionado(alumnos.filter((e) => e.id === cabecera.id.text?.value));
-  }, [alumnos, cabecera]);
+  }, [alumnos, cabecera, seleccionado]);
 
   useEffect(() => {
     if (seleccionado.length) {
