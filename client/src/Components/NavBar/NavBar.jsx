@@ -39,8 +39,14 @@ export default function NavBar() {
         className={`d-flex justify-content-between align-items-center ${styles.navBar}`}
       >
         <Container fluid>
-          {img}
-          {width > 460 && <Navbar.Brand href="#">{title}</Navbar.Brand>}
+          <NavLink
+            to="/"
+            className="text-decoration-none d-flex justify-content-between align-items-center"
+          >
+            {img}
+            {width > 460 && <Navbar.Brand href="#">{title}</Navbar.Brand>}
+          </NavLink>
+
           <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
           <Navbar.Offcanvas
             id={`offcanvasNavbar-expand-${expand}`}

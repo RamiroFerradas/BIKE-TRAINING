@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useTraining from "../../../Hooks/useTraining";
 import FieldInput from "../Field/FieldInput";
@@ -19,26 +19,26 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { categorias, provincias } from "../../Utils/Options";
 import { useLocation } from "react-router-dom";
 import useLocalStorage from "../../../Hooks/useLocalStorage";
+import Loader from "../../Loader/Loader";
 
 export default function Cabecera({
   selectRef,
-  input1,
-  input2,
-  input3,
-  input4,
-  input5,
-  input6,
-  input7,
-  input8,
+  // input1,
+  // input2,
+  // input3,
+  // input4,
+  // input5,
+  // input6,
+  // input7,
+  // input8,
 }) {
   const animatedComponents = makeAnimated();
   const dispatch = useDispatch();
-  const { seleccionado, view, setSeleccionado } = useSelected();
   const { alumnos } = useFetchAlumnos();
   const { cabecera, setCabecera, handleChangueCabecera } = useTraining();
   const [selected, setSelected] = useLocalStorage("userSelected", []);
+  const { seleccionado, isLoading } = useSelected(selected);
   const { pathname, state } = useLocation();
-
   const refNombre = useRef();
   const refApellido = useRef();
 
@@ -58,11 +58,24 @@ export default function Cabecera({
     };
   });
 
+  const [defaultvalue, setDefaultValue] = useState();
   useEffect(() => {
-    setSeleccionado(seleccionado);
-    if (state?.prevPathname === "/alumnos") {
+    if (state?.prevPathname == "/alumnos") {
+      const defaultvalue = seleccionado?.map(({ nombre, apellido, id }) => {
+        return {
+          value: id,
+          label: nombre + " " + apellido,
+        };
+      });
+
+      setDefaultValue(defaultvalue);
     }
-  }, []);
+  }, [selected, seleccionado]);
+  useEffect(() => {
+    if (selected) {
+      setCabecera({ ...cabecera, id: { error: false } });
+    }
+  }, [selected]);
   useEffect(() => {
     if (cabecera.id.text === "" || cabecera.id.text === null) {
       setCabecera({ ...cabecera, id: { error: true } });
@@ -117,7 +130,9 @@ export default function Cabecera({
     }
   }, [cabecera.id, refNombre.current?.value, refApellido.current?.value]);
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div className={styles.body}>
       <form action="">
         <FieldInput
@@ -132,6 +147,7 @@ export default function Cabecera({
             closeMenuOnSelect={true}
             components={animatedComponents}
             // value={selectedOption}
+            defaultValue={defaultvalue}
             options={optionsAlumnos}
             isClearable
             onChange={onChangueNombre}

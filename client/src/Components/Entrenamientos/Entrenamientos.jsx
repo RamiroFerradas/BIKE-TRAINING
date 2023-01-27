@@ -36,14 +36,8 @@ export default function Entrenamientos() {
 
   const { entrenamiento, cabecera } = useTraining();
   const { seleccionado, view, setSeleccionado } = useSelected();
-  const { pathname, state } = useLocation();
+  const { state } = useLocation();
   const [selected, setSelected] = useLocalStorage("userSelected", []);
-
-  useEffect(() => {
-    if (state?.prevPathname === "/alumnos") {
-      setSeleccionado(selected);
-    }
-  }, [seleccionado, selected]);
 
   const [preview, setPreview] = useState(false);
   const handleEntrenamiento = () => {

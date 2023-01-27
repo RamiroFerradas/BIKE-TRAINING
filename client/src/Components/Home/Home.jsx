@@ -27,14 +27,6 @@ export default function Home() {
     }, 500);
   }, [user]);
 
-  // if (loading || !usuario.email) {
-  //   return (
-  //     <>
-  //       <Loader />
-  //     </>
-  //   );
-  // }
-
   return !isAuthenticated ? (
     <Login />
   ) : (
